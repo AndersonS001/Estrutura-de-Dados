@@ -19,6 +19,7 @@ public:
 
     void setDescricao(const QString &value);
     void setTitulo(const QString &value);
+
     QDateTime getQuando() const;
     void setQuando(const QDateTime &value);
 

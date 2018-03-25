@@ -54,6 +54,9 @@ bool LDDE::Imprimir(){
 }
 
 No* LDDE::Buscar(Compromisso newAppointment){
+    arquivo a;
+    a.buscaArquivo();
+
     No *atual = primeiro;
     if(!atual){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
@@ -63,6 +66,7 @@ No* LDDE::Buscar(Compromisso newAppointment){
         atual = atual->proxEnd;
     if(atual && atual->valor->quando == newAppointment.quando)
         return atual;
+
     QMessageBox::information(nullptr,"Erro","Não foi encontrado nenhum compromisso no dia " +
                              newAppointment.quando.date().toString("dd.MM.yyyy") +" às " +
                              newAppointment.quando.time().toString("hh:mm"));
@@ -119,9 +123,6 @@ bool LDDE::Inserir(Compromisso newAppointment){
     }
     novo->endAnt = anterior;
     novo->proxEnd = atual;
-
-    arquivo a;
-    a.insereArquivo(newAppointment);
 
     return true;
 }

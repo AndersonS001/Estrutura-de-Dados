@@ -8,8 +8,9 @@ class arquivo
 public:
     arquivo();
     bool criaArquivo();
-    QString leArquivo();
+    QString leDadosInseridosArquivo();
     void insereArquivo(Compromisso c);
+    void buscaArquivo();
 
     std::fstream file;
 };

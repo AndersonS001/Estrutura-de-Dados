@@ -31,6 +31,8 @@ bool Agenda::on_btnInserir_clicked()
       novo.setDescricao(ui->txtDescricao->toPlainText());
 
       this->lista->Inserir(novo);
+      arquivo a;
+      a.insereArquivo(novo);
 
       QMessageBox::information(nullptr,"Novo compromisso","Compromisso inserido com sucesso");
       return true;
@@ -46,6 +48,10 @@ void Agenda::on_btnBuscar_clicked()
 {
     Compromisso novo;
     novo.setQuando(ui->dtQuando->dateTime());
+
+    arquivo a;
+    a.buscaArquivo();
+
     No *buscar = lista->Buscar(novo);
     if(buscar)
        lista->Imprimir(novo);
