@@ -1,4 +1,5 @@
 #include "ldde.h"
+#include<arquivo.h>
 #include <iostream>
 #include "compromisso.h"
 #include <QMessageBox>
@@ -26,14 +27,14 @@ LDDE::~LDDE(){
     }
 }
 bool LDDE::Imprimir(Compromisso newAppointment){
-   No *imprimir = Buscar(newAppointment);
-   if (!imprimir)
-       return false;
-   QMessageBox::information(nullptr,"Compromisso",imprimir->valor->titulo +" no dia " +
-                            imprimir->valor->quando.date().toString("dd.MM.yyyy")+" ás "+
-                            imprimir->valor->quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                            imprimir->valor->descricao);
-   return true;
+    No *imprimir = Buscar(newAppointment);
+    if (!imprimir)
+        return false;
+    QMessageBox::information(nullptr,"Compromisso",imprimir->valor->titulo +" no dia " +
+                             imprimir->valor->quando.date().toString("dd.MM.yyyy")+" ás "+
+                             imprimir->valor->quando.time().toString("hh:mm")+"\n\nDescrição: "+
+                             imprimir->valor->descricao);
+    return true;
 }
 
 bool LDDE::Imprimir(){
@@ -94,29 +95,33 @@ bool LDDE::Remover(Compromisso newAppointment){
 bool LDDE::Inserir(Compromisso newAppointment){
     No* novo = new No(newAppointment);
     if(!novo){
-         QMessageBox::information(nullptr,"Dunno","Não foi possível alocar memória");
+        QMessageBox::information(nullptr,"Dunno","Não foi possível alocar memória");
         return false;
     }
 
-   No *atual = primeiro;
-   No *anterior = nullptr;
-   while(atual && atual->valor->quando < newAppointment.quando){
+    No *atual = primeiro;
+    No *anterior = nullptr;
+    while(atual && atual->valor->quando < newAppointment.quando){
         anterior = atual;
         atual = atual->proxEnd;
-   }
-   if(anterior){
-       anterior->proxEnd = novo;
-   }
-   else{
-       primeiro = novo;
-   }
-   if(atual){
-       atual->endAnt = novo;
-   }
-   else{
-       ultimo = novo;
-   }
-   novo->endAnt = anterior;
-   novo->proxEnd = atual;
-   return true;
+    }
+    if(anterior){
+        anterior->proxEnd = novo;
+    }
+    else{
+        primeiro = novo;
+    }
+    if(atual){
+        atual->endAnt = novo;
+    }
+    else{
+        ultimo = novo;
+    }
+    novo->endAnt = anterior;
+    novo->proxEnd = atual;
+
+    arquivo a;
+    a.insereArquivo(newAppointment);
+
+    return true;
 }

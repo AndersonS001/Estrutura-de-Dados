@@ -2,6 +2,7 @@
 #include "ui_agenda.h"
 #include "compromisso.h"
 #include "no.h"
+#include "arquivo.h"
 #include <QMessageBox>
 #include <QString>
 
@@ -30,6 +31,7 @@ bool Agenda::on_btnInserir_clicked()
       novo.setDescricao(ui->txtDescricao->toPlainText());
 
       this->lista->Inserir(novo);
+
       QMessageBox::information(nullptr,"Novo compromisso","Compromisso inserido com sucesso");
       return true;
 }

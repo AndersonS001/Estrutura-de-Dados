@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         agenda.cpp \
     compromisso.cpp \
     ldde.cpp \
-    no.cpp
+    no.cpp \
+    arquivo.cpp
 
 HEADERS  += agenda.h \
     compromisso.h \
     ldde.h \
-    no.h
+    no.h \
+    arquivo.h
 
 FORMS    += agenda.ui
