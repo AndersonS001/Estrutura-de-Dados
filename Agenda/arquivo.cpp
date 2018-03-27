@@ -80,8 +80,7 @@ void arquivo::buscaArquivo(){
             }
             if(valida.startsWith("3"))
                 novo.setDescricao((valida.mid(1,valida.size())));
-
-            l.Inserir(novo);
         }
+        l.Inserir(novo);
     }
 }
