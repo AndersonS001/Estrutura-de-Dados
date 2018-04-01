@@ -4,13 +4,15 @@
 
 class No{
 private:
-    Compromisso *valor;
+    Compromisso valor;
     No* proxEnd;
     No *endAnt;
 public:
     No(Compromisso elemento);
     ~No();
+    Compromisso getValor();
     friend class LDDE;
+    friend class Fila;
 
 };
 

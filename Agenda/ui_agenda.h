@@ -57,9 +57,9 @@ public:
         dtQuando->setObjectName(QStringLiteral("dtQuando"));
         dtQuando->setGeometry(QRect(120, 60, 241, 25));
         dtQuando->setFont(font);
-        dtQuando->setDateTime(QDateTime(QDate(2018, 3, 21), QTime(23, 59, 59)));
+        dtQuando->setMinimumDateTime(QDateTime(QDate(2018, 3, 30), QTime(0, 0, 0)));
         dtQuando->setMaximumDate(QDate(2100, 12, 31));
-        dtQuando->setMinimumDate(QDate(2018, 3, 21));
+        dtQuando->setMinimumDate(QDate(2018, 3, 30));
         dtQuando->setCalendarPopup(true);
         txtTitulo = new QLineEdit(centralWidget);
         txtTitulo->setObjectName(QStringLiteral("txtTitulo"));

@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Agenda *w = new Agenda(nullptr);
-    w->show();
+    Agenda w;
+    w.show();
     return a.exec();
 }

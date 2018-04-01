@@ -17,12 +17,14 @@ SOURCES += main.cpp\
     compromisso.cpp \
     ldde.cpp \
     no.cpp \
-    arquivo.cpp
+    arquivo.cpp \
+    fila.cpp
 
 HEADERS  += agenda.h \
     compromisso.h \
     ldde.h \
     no.h \
-    arquivo.h
+    arquivo.h \
+    fila.h
 
 FORMS    += agenda.ui

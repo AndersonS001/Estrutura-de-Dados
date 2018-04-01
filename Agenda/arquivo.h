@@ -2,15 +2,22 @@
 #define ARQUIVO_H
 #include <fstream>
 #include<QString>
+#include<fila.h>
+#include<no.h>
 
-class arquivo
+class Arquivo
 {
 public:
-    arquivo();
+    Arquivo();
     bool criaArquivo();
     QString leDadosInseridosArquivo();
+    void insereArquivo(No* c);
     void insereArquivo(Compromisso c);
-    void buscaArquivo();
+    vector<Compromisso> buscaArquivo();
+    Fila f;
+   // LDDE* lista;
+    No* atual;
+    No* obtemAtual();
 
     std::fstream file;
 };

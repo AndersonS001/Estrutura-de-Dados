@@ -38,6 +38,11 @@ Compromisso::Compromisso(QDate _data, QTime _horario, QString _descricao, QStrin
     this->descricao = _descricao;
     this->titulo = _titulo;
 }
+Compromisso::Compromisso(QDateTime _quando, QString _descricao, QString _titulo){
+    this->setQuando(_quando);
+    this->descricao = _descricao;
+    this->titulo = _titulo;
+}
 
 Compromisso::~Compromisso(){
     //QMessageBox::information(nullptr,"Deletando" + this->titulo,"Seu compromisso no dia " + this->quando.toString() +" foi apagado");

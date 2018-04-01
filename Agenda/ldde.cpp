@@ -1,9 +1,11 @@
 #include "ldde.h"
-#include<arquivo.h>
 #include <iostream>
 #include "compromisso.h"
+#include "arquivo.h"
+#include "fila.h"
 #include <QMessageBox>
 #include <QString>
+#include<vector>
 
 /*
  *  ultima edição 21/03 por Felipe
@@ -13,58 +15,80 @@
 using namespace std;
 
 LDDE::LDDE(){
-    primeiro =nullptr;
+    primeiro = nullptr;
     ultimo = nullptr;
+
+    Arquivo x;
+    vector<Compromisso> v = x.buscaArquivo();
+
+    for(int i=0;i<v.size(); i++){
+      this->Inserir(v[i]);
+    }
 }
 
 LDDE::~LDDE(){
     No *atual = primeiro;
     No *backup = nullptr;
+    Arquivo x;
+
     while(atual){
+        x.insereArquivo(atual);
+
         backup = atual->proxEnd;
         delete atual;
         atual = backup;
     }
 }
+
 bool LDDE::Imprimir(Compromisso newAppointment){
+
     No *imprimir = Buscar(newAppointment);
     if (!imprimir)
         return false;
-    QMessageBox::information(nullptr,"Compromisso",imprimir->valor->titulo +" no dia " +
-                             imprimir->valor->quando.date().toString("dd.MM.yyyy")+" ás "+
-                             imprimir->valor->quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                             imprimir->valor->descricao);
+    QMessageBox::information(nullptr,"Compromisso",imprimir->valor.titulo +" no dia " +
+                             imprimir->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
+                             imprimir->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
+                             imprimir->valor.descricao);
     return true;
 }
 
 bool LDDE::Imprimir(){
     No *atual = primeiro;
+
     if(!atual){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
         return false;
     }
     while(atual){
-        QMessageBox::information(nullptr,"Compromisso",atual->valor->titulo +" no dia " +
-                                 atual->valor->quando.date().toString("dd.MM.yyyy")+" ás "+
-                                 atual->valor->quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                                 atual->valor->descricao);
+        QMessageBox::information(nullptr,"Compromisso",atual->valor.titulo +" no dia " +
+                                 atual->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
+                                 atual->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
+                                 atual->valor.descricao);
         atual = atual->proxEnd;
     }
     return true;
 }
 
-No* LDDE::Buscar(Compromisso newAppointment){
-    arquivo a;
-    a.buscaArquivo();
+void LDDE::setPrimeiro(No *n){
+    primeiro = n;
+}
 
+No* LDDE::getPrimeiro(){
+    return primeiro;
+}
+
+No* LDDE::Buscar(Compromisso newAppointment){
     No *atual = primeiro;
+
     if(!atual){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
         return nullptr;
     }
-    while(atual && atual->valor->quando < newAppointment.quando)
+
+    while(atual && atual->valor.quando < newAppointment.quando)
         atual = atual->proxEnd;
-    if(atual && atual->valor->quando == newAppointment.quando)
+
+    if(atual && atual->valor.quando == newAppointment.quando)
         return atual;
 
     QMessageBox::information(nullptr,"Erro","Não foi encontrado nenhum compromisso no dia " +
@@ -80,18 +104,21 @@ bool LDDE::Remover(Compromisso newAppointment){
         return false;
     No *proximo = removido->proxEnd;
     No *anterior = removido->endAnt;
+
     if(anterior)
         anterior->proxEnd = proximo;
     else
         primeiro =proximo;
+
     if(proximo)
         proximo->endAnt = anterior;
     else
         ultimo = anterior;
-    QMessageBox::information(nullptr,"Deletando o compromisso",removido->valor->titulo +" no dia " +
-                             removido->valor->quando.date().toString("dd.MM.yyyy")+" ás "+
-                             removido->valor->quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                             removido->valor->descricao);
+
+    QMessageBox::information(nullptr,"Deletando o compromisso",removido->valor.titulo +" no dia " +
+                             removido->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
+                             removido->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
+                             removido->valor.descricao);
     delete removido;
     return true;
 }
@@ -105,7 +132,7 @@ bool LDDE::Inserir(Compromisso newAppointment){
 
     No *atual = primeiro;
     No *anterior = nullptr;
-    while(atual && atual->valor->quando < newAppointment.quando){
+    while(atual && atual->valor.quando < newAppointment.quando){
         anterior = atual;
         atual = atual->proxEnd;
     }

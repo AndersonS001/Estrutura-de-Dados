@@ -3,6 +3,7 @@
 #include "compromisso.h"
 #include <QMainWindow>
 #include "ldde.h"
+
 namespace Ui {
 class Agenda;
 }
@@ -14,6 +15,8 @@ class Agenda : public QMainWindow
 public:
     explicit Agenda(QWidget *parent = 0);
     ~Agenda();
+    void Limpar();
+    void chamaDes();
 
 private slots:
     bool on_btnInserir_clicked();

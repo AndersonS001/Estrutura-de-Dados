@@ -1,22 +1,24 @@
-#include "arquivo.h"
-
-#include "ldde.h"
+#include <cstdlib>
+#include<ldde.h>
+#include<compromisso.h>
 #include <iostream>
-#include "compromisso.h"
-#include "fila.h"
+#include "arquivo1.h"
 #include <fstream>
-#include <QMessageBox>
 #include <QString>
-#include<vector>
+#include <QMessageBox>
+
 using namespace std;
 
-Arquivo::Arquivo(){
-    criaArquivo();
-    buscaArquivo();
+LDDE* lista;
+arquivo::arquivo(){
+
 }
 
-bool Arquivo::criaArquivo()
-{
+arquivo::arquivo(No* _prim){
+    this->lista->Inserir(_prim);
+}
+
+bool arquivo::criaArquivo(){
     ifstream file("Agenda.txt");
 
     if(!file){
@@ -26,7 +28,7 @@ bool Arquivo::criaArquivo()
     return true;
 }
 
-QString Arquivo::leDadosInseridosArquivo(){
+QString arquivo::leDadosInseridosArquivo(){
     ifstream file("Agenda.txt");
 
     string x;
@@ -40,24 +42,24 @@ QString Arquivo::leDadosInseridosArquivo(){
     return ret;
 }
 
-void Arquivo::insereArquivo(No* c){
+void arquivo::insereArquivo(No* c){
     QString anterior = leDadosInseridosArquivo();
-    QString novo;
-    novo.append(anterior);
 
+    QString novo;
+    //novo.append(anterior);
     novo.append("Titulo:\n");
-    novo.append("1"+c->getValor().getTitulo()+"\n");
+    novo.append("1"+c->getValor()->getTitulo()+"\n");
     novo.append("Quando: \n");
-    novo.append("2"+c->getValor().getQuando().toString("dd/MM/yyyy hh:mm") +"\n");
+    novo.append("2"+c->getValor()->getQuando().toString("dd/MM/yyyy hh:mm") +"\n");
     novo.append("Descrição: \n");
-    novo.append("3"+c->getValor().getDescricao() +"\n");
+    novo.append("3"+c->getValor()->getDescricao() +"\n");
     novo.replace(" ","(ESPACO)");
 
     ofstream file("Agenda.txt");
     file << novo.toStdString();
 }
 
-void Arquivo::insereArquivo(Compromisso c){
+void arquivo::insereArquivo(Compromisso c){
     QString anterior = leDadosInseridosArquivo();
 
     QString novo;
@@ -74,18 +76,14 @@ void Arquivo::insereArquivo(Compromisso c){
     file << novo.toStdString();
 }
 
-//No* Arquivo::obtemAtual(){
-//if(!this->atual)
-//  this->atual = buscaArquivo();
+No* arquivo::buscaArquivo(){
+    LDDE l;
 
-//,return this->atual;
-//}
-
-vector<Compromisso> Arquivo::buscaArquivo(){
     ifstream file("Agenda.txt");
+
     Compromisso novo;
+
     string x;
-    vector<Compromisso> vec;
 
     while (file >> x){
         QString valida = QString::fromStdString(x);
@@ -100,10 +98,10 @@ vector<Compromisso> Arquivo::buscaArquivo(){
             QDateTime q1 = q1.fromString(xx,"dd/MM/yyyy hh:mm");
             novo.setQuando(q1);
         }
-        if(valida.startsWith("3")){
+        if(valida.startsWith("3"))
             novo.setDescricao((valida.mid(1,valida.size())));
-            vec.push_back(novo);
-        }
     }
-    return vec;
-  }
+
+    l.Inserir(novo,"2");
+    return l.primeiro;
+}
