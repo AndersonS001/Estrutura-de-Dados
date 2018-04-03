@@ -37,8 +37,8 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QPushButton *btnBuscar;
     QPushButton *btnRemover;
+    QPushButton *btnAlterar;
 
     void setupUi(QMainWindow *Agenda)
     {
@@ -49,7 +49,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         btnInserir = new QPushButton(centralWidget);
         btnInserir->setObjectName(QStringLiteral("btnInserir"));
-        btnInserir->setGeometry(QRect(20, 244, 80, 21));
+        btnInserir->setGeometry(QRect(20, 244, 77, 30));
         QFont font;
         font.setPointSize(10);
         btnInserir->setFont(font);
@@ -69,7 +69,7 @@ public:
         txtDescricao->setGeometry(QRect(118, 110, 241, 81));
         btnVisualizar = new QPushButton(centralWidget);
         btnVisualizar->setObjectName(QStringLiteral("btnVisualizar"));
-        btnVisualizar->setGeometry(QRect(120, 244, 91, 21));
+        btnVisualizar->setGeometry(QRect(120, 244, 81, 30));
         btnVisualizar->setFont(font);
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
@@ -83,14 +83,14 @@ public:
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(20, 140, 79, 21));
         label_3->setFont(font);
-        btnBuscar = new QPushButton(centralWidget);
-        btnBuscar->setObjectName(QStringLiteral("btnBuscar"));
-        btnBuscar->setGeometry(QRect(20, 289, 81, 21));
-        btnBuscar->setFont(font);
         btnRemover = new QPushButton(centralWidget);
         btnRemover->setObjectName(QStringLiteral("btnRemover"));
-        btnRemover->setGeometry(QRect(120, 289, 91, 21));
+        btnRemover->setGeometry(QRect(120, 289, 77, 30));
         btnRemover->setFont(font);
+        btnAlterar = new QPushButton(centralWidget);
+        btnAlterar->setObjectName(QStringLiteral("btnAlterar"));
+        btnAlterar->setGeometry(QRect(20, 289, 77, 30));
+        btnAlterar->setFont(font);
         Agenda->setCentralWidget(centralWidget);
 
         retranslateUi(Agenda);
@@ -106,8 +106,8 @@ public:
         label->setText(QApplication::translate("Agenda", "T\303\255tulo", 0));
         label_2->setText(QApplication::translate("Agenda", "Quando:", 0));
         label_3->setText(QApplication::translate("Agenda", "Descri\303\247\303\243o:", 0));
-        btnBuscar->setText(QApplication::translate("Agenda", "Buscar", 0));
         btnRemover->setText(QApplication::translate("Agenda", "Remover", 0));
+        btnAlterar->setText(QApplication::translate("Agenda", "Alterar", 0));
     } // retranslateUi
 
 };

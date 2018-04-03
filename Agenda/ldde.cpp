@@ -7,149 +7,149 @@
 #include <QString>
 #include<vector>
 
-/*
- *  ultima edição 21/03 por Felipe
- */
-
-
-using namespace std;
+#define FLAG 0
 
 LDDE::LDDE(){
     primeiro = nullptr;
     ultimo = nullptr;
 
-    Arquivo x;
+    /* Arquivo x;
     vector<Compromisso> v = x.buscaArquivo();
 
     for(int i=0;i<v.size(); i++){
       this->Inserir(v[i]);
-    }
+    }*/
 }
 
 LDDE::~LDDE(){
-    No *atual = primeiro;
-    No *backup = nullptr;
-    Arquivo x;
+    Iterador atual(primeiro);
+    Iterador backup;
+//    Arquivo x;
 
-    while(atual){
-        x.insereArquivo(atual);
-
-        backup = atual->proxEnd;
-        delete atual;
+    while(atual.noExiste()){
+//      x.insereArquivo(atual);
+        backup.setIt(atual.getProximoEndereco());
+        delete atual.getEnderecoAtual();
         atual = backup;
     }
 }
 
-bool LDDE::Imprimir(Compromisso newAppointment){
+bool LDDE::Imprimir(Compromisso compromisso){
 
-    No *imprimir = Buscar(newAppointment);
-    if (!imprimir)
+    Iterador imprimir;
+    Buscar(imprimir,compromisso);
+    if (!imprimir.noExiste())
         return false;
-    QMessageBox::information(nullptr,"Compromisso",imprimir->valor.titulo +" no dia " +
-                             imprimir->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
-                             imprimir->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                             imprimir->valor.descricao);
+    QMessageBox::information(nullptr,"Compromisso",imprimir.getValor().getTitulo() +" no dia " +
+                             imprimir.getValor().getData()+" ás "+
+                             imprimir.getValor().getHora()+"\n\nDescrição: "+
+                             imprimir.getValor().getDescricao());
     return true;
 }
 
 bool LDDE::Imprimir(){
-    No *atual = primeiro;
+    Iterador atual(this->primeiro);
+    //No *atual = primeiro;
 
-    if(!atual){
+    if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
         return false;
     }
-    while(atual){
-        QMessageBox::information(nullptr,"Compromisso",atual->valor.titulo +" no dia " +
-                                 atual->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
-                                 atual->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                                 atual->valor.descricao);
-        atual = atual->proxEnd;
+    while(atual.noExiste()){
+        QMessageBox::information(nullptr,"Compromisso",atual.getValor().getTitulo() +" no dia " +
+                                 atual.getValor().getData() +" ás "+
+                                 atual.getValor().getHora()+"\n\nDescrição: "+
+                                 atual.getValor().getDescricao());
+        atual++;
     }
     return true;
 }
 
-void LDDE::setPrimeiro(No *n){
-    primeiro = n;
-}
-
-No* LDDE::getPrimeiro(){
-    return primeiro;
-}
-
-No* LDDE::Buscar(Compromisso newAppointment){
-    No *atual = primeiro;
-
-    if(!atual){
+bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
+    Iterador atual(primeiro);
+    if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
-        return nullptr;
+        return false;
     }
 
-    while(atual && atual->valor.quando < newAppointment.quando)
-        atual = atual->proxEnd;
-
-    if(atual && atual->valor.quando == newAppointment.quando)
-        return atual;
-
+    while(atual.noExiste() && atual.getValor().getQuando() < buscar.getQuando())
+        atual++;
+    if(atual.noExiste() && atual.getValor().getQuando() == buscar.getQuando()){
+        achou = atual;
+        return true;
+    }
     QMessageBox::information(nullptr,"Erro","Não foi encontrado nenhum compromisso no dia " +
-                             newAppointment.quando.date().toString("dd.MM.yyyy") +" às " +
-                             newAppointment.quando.time().toString("hh:mm"));
-    return nullptr;
+                             buscar.getData() +" às " + buscar.getHora());
+    return false;
 }
 
 // falta testar essa função
-bool LDDE::Remover(Compromisso newAppointment){
-    No *removido = Buscar(newAppointment);
-    if(!removido)
+bool LDDE::Remover(Compromisso remover, int flag){
+    Iterador removido;
+    this->Buscar(removido, remover);
+    if(!removido.noExiste())
         return false;
-    No *proximo = removido->proxEnd;
-    No *anterior = removido->endAnt;
+    Iterador proximo(removido.getProximoEndereco()); // removido->proxEnd;
+    Iterador anterior(removido.getEnderecoAnterior()); //= removido->endAnt;
 
-    if(anterior)
-        anterior->proxEnd = proximo;
+    if(anterior.noExiste())
+        anterior.setProximoEndereco(proximo.getEnderecoAtual()); //->proxEnd = proximo;
     else
-        primeiro =proximo;
+        primeiro = proximo.getEnderecoAtual();
 
-    if(proximo)
-        proximo->endAnt = anterior;
+    if(proximo.noExiste())
+        proximo.setEnderecoAnterior(anterior.getEnderecoAtual());//->endAnt = anterior;
     else
-        ultimo = anterior;
-
-    QMessageBox::information(nullptr,"Deletando o compromisso",removido->valor.titulo +" no dia " +
-                             removido->valor.quando.date().toString("dd.MM.yyyy")+" ás "+
-                             removido->valor.quando.time().toString("hh:mm")+"\n\nDescrição: "+
-                             removido->valor.descricao);
-    delete removido;
+        ultimo = anterior.getEnderecoAtual();
+    if(flag !=0){
+        QMessageBox::information(nullptr,"Deletando o compromisso",removido.getValor().getTitulo() +" no dia " +
+                             removido.getValor().getData()+" ás "+
+                             removido.getValor().getHora()+"\n\nDescrição: "+
+                             removido.getValor().getDescricao());
+    }
+    delete removido.getEnderecoAtual();
     return true;
 }
 
 bool LDDE::Inserir(Compromisso newAppointment){
     No* novo = new No(newAppointment);
+    Iterador novoNo(novo);
     if(!novo){
         QMessageBox::information(nullptr,"Dunno","Não foi possível alocar memória");
         return false;
     }
-
-    No *atual = primeiro;
-    No *anterior = nullptr;
-    while(atual && atual->valor.quando < newAppointment.quando){
+    Iterador atual(primeiro);
+    Iterador anterior;
+    while(atual.noExiste() && atual.getValor().getQuando() <= newAppointment.getQuando()){
+        if(novoNo.getValor().getQuando() == atual.getValor().getQuando()){
+            QMessageBox::information(nullptr,"Erro","Não é possível inserir dois compromissos na mesma data e hora!");
+            return false;
+        }
         anterior = atual;
-        atual = atual->proxEnd;
+        atual++;
     }
-    if(anterior){
-        anterior->proxEnd = novo;
-    }
-    else{
-        primeiro = novo;
-    }
-    if(atual){
-        atual->endAnt = novo;
+    if(anterior.noExiste()){
+        anterior.setProximoEndereco(novo);
     }
     else{
-        ultimo = novo;
+        primeiro = novoNo.getEnderecoAtual();
     }
-    novo->endAnt = anterior;
-    novo->proxEnd = atual;
+    if(atual.noExiste()){
+        atual.setEnderecoAnterior(novo);
+    }
+    else{
+        ultimo = novoNo.getEnderecoAtual();
+    }
+    novoNo.setEnderecoAnterior( anterior.getEnderecoAtual());
+    novoNo.setProximoEndereco( atual.getEnderecoAtual());
+    return true;
+}
 
+bool LDDE::Alterar(Compromisso removido, Compromisso novo){
+   //Se deletar o removido, vai retornar true
+    if(!this->Remover(removido, FLAG))
+       return false;
+    this->Inserir(novo);
+    QMessageBox::information(nullptr,"Funfou","Valor alterado");
     return true;
 }

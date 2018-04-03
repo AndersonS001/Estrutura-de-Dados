@@ -10,10 +10,8 @@ private:
 public:
     No(Compromisso elemento);
     ~No();
-    Compromisso getValor();
-    friend class LDDE;
+    Compromisso getValor()const;
     friend class Fila;
-
+    friend class Iterador;
 };
-
 #endif // NO_H

@@ -21,11 +21,10 @@ public:
     void setTitulo(const QString &value);
 
     QDateTime getQuando() const;
+    QString getData() const;
+    QString getHora() const;
     void setQuando(const QDateTime &value);
-
-    friend class No;
-    friend class LDDE;
-    friend class Agenda;
+    void setQuando(QDate data, QTime hora);
 };
 
 #endif // COMPROMISSO_H

@@ -1,34 +1,37 @@
 #include "compromisso.h"
-#include <QMessageBox>
 
-QString Compromisso::getTitulo() const
-{
+QString Compromisso::getTitulo() const{
     return titulo;
 }
 
-QString Compromisso::getDescricao() const
-{
+QString Compromisso::getDescricao() const{
     return descricao;
 }
 
-void Compromisso::setDescricao(const QString &value)
-{
+void Compromisso::setDescricao(const QString &value){
     descricao = value;
 }
 
-void Compromisso::setTitulo(const QString &value)
-{
+void Compromisso::setTitulo(const QString &value){
     titulo = value;
 }
 
-QDateTime Compromisso::getQuando() const
-{
+QDateTime Compromisso::getQuando() const{
     return quando;
 }
 
-void Compromisso::setQuando(const QDateTime &value)
-{
+QString Compromisso::getData()const{
+    return quando.date().toString("dd.MM.yyyy");
+}
+QString Compromisso::getHora() const{
+    return quando.time().toString("hh:mm");
+}
+void Compromisso::setQuando(const QDateTime &value){
     quando = value;
+}
+void Compromisso::setQuando(QDate data,QTime hora){
+    quando.setDate(data);
+    quando.setTime(hora);
 }
 
 Compromisso::Compromisso(){}
@@ -44,6 +47,4 @@ Compromisso::Compromisso(QDateTime _quando, QString _descricao, QString _titulo)
     this->titulo = _titulo;
 }
 
-Compromisso::~Compromisso(){
-    //QMessageBox::information(nullptr,"Deletando" + this->titulo,"Seu compromisso no dia " + this->quando.toString() +" foi apagado");
-}
+Compromisso::~Compromisso(){}

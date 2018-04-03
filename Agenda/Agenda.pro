@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     ldde.cpp \
     no.cpp \
     arquivo.cpp \
-    fila.cpp
+    fila.cpp \
+    iterador.cpp
 
 HEADERS  += agenda.h \
     compromisso.h \
