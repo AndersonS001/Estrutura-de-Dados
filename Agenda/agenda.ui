@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>244</y>
-      <width>80</width>
-      <height>21</height>
+      <width>77</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -99,8 +99,8 @@
      <rect>
       <x>120</x>
       <y>244</y>
-      <width>91</width>
-      <height>21</height>
+      <width>81</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -166,31 +166,13 @@
      <string>Descrição:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnBuscar">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>289</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Buscar</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnRemover">
     <property name="geometry">
      <rect>
       <x>120</x>
       <y>289</y>
-      <width>91</width>
-      <height>21</height>
+      <width>77</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -200,6 +182,24 @@
     </property>
     <property name="text">
      <string>Remover</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAlterar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>289</y>
+      <width>77</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Alterar</string>
     </property>
    </widget>
   </widget>
