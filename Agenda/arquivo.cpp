@@ -40,28 +40,35 @@ QString Arquivo::leDadosInseridosArquivo(){
     return ret;
 }
 
-void Arquivo::insereArquivo(No* c){
+void Arquivo::insereArquivo(Iterador& c, int i){
     QString anterior = leDadosInseridosArquivo();
+
     QString novo;
-    novo.append(anterior);
+
+    if(i!=0)
+        novo.append(anterior);
 
     novo.append("Titulo:\n");
-    novo.append("1"+c->getValor().getTitulo()+"\n");
+    novo.append("1"+c.getValor().getTitulo()+"\n");
     novo.append("Quando: \n");
-    novo.append("2"+c->getValor().getQuando().toString("dd/MM/yyyy hh:mm") +"\n");
+    novo.append("2"+c.getValor().getQuando().toString("dd/MM/yyyy hh:mm") +"\n");
     novo.append("Descrição: \n");
-    novo.append("3"+c->getValor().getDescricao() +"\n");
+    novo.append("3"+c.getValor().getDescricao() +"\n");
     novo.replace(" ","(ESPACO)");
+    i++;
 
     ofstream file("Agenda.txt");
     file << novo.toStdString();
 }
 
-void Arquivo::insereArquivo(Compromisso c){
+void Arquivo::insereArquivo(Compromisso c, int i){
     QString anterior = leDadosInseridosArquivo();
 
     QString novo;
-    novo.append(anterior);
+
+    if(i!=0)
+        novo.append(anterior);
+
     novo.append("Titulo:\n");
     novo.append("1"+c.getTitulo()+"\n");
     novo.append("Quando: \n");
@@ -69,6 +76,7 @@ void Arquivo::insereArquivo(Compromisso c){
     novo.append("Descrição: \n");
     novo.append("3"+c.getDescricao() +"\n");
     novo.replace(" ","(ESPACO)");
+    i++;
 
     ofstream file("Agenda.txt");
     file << novo.toStdString();
@@ -80,6 +88,10 @@ void Arquivo::insereArquivo(Compromisso c){
 
 //,return this->atual;
 //}
+
+void Arquivo::arquivoLimpo(){
+    remove( "Agenda.txt" );
+}
 
 vector<Compromisso> Arquivo::buscaArquivo(){
     ifstream file("Agenda.txt");
@@ -106,4 +118,4 @@ vector<Compromisso> Arquivo::buscaArquivo(){
         }
     }
     return vec;
-  }
+}

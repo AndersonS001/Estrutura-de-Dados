@@ -13,21 +13,29 @@ LDDE::LDDE(){
     primeiro = nullptr;
     ultimo = nullptr;
 
-    /* Arquivo x;
+    Arquivo x;
     vector<Compromisso> v = x.buscaArquivo();
 
-    for(int i=0;i<v.size(); i++){
-      this->Inserir(v[i]);
-    }*/
+
+        for(int i=0;i<v.size(); i++){
+            this->Inserir(v[i]);
+        }
+
 }
 
 LDDE::~LDDE(){
     Iterador atual(primeiro);
     Iterador backup;
-//    Arquivo x;
+
+    Arquivo x;
+    int i=0;
+    if(!atual)
+        x.arquivoLimpo();
 
     while(atual.noExiste()){
-//      x.insereArquivo(atual);
+        x.insereArquivo(atual,i);
+        i++;
+
         backup.setIt(atual.getProximoEndereco());
         delete atual.getEnderecoAtual();
         atual = backup;

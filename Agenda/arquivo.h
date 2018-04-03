@@ -2,6 +2,7 @@
 #define ARQUIVO_H
 #include <fstream>
 #include<QString>
+#include<ldde.h>
 #include<fila.h>
 #include<no.h>
 
@@ -11,11 +12,10 @@ public:
     Arquivo();
     bool criaArquivo();
     QString leDadosInseridosArquivo();
-    void insereArquivo(No* c);
-    void insereArquivo(Compromisso c);
+    void insereArquivo(Iterador& c, int i);
+    void insereArquivo(Compromisso c, int i);
     vector<Compromisso> buscaArquivo();
-    Fila f;
-   // LDDE* lista;
+    void arquivoLimpo();
     No* atual;
     No* obtemAtual();
 

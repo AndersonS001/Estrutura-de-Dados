@@ -58,6 +58,7 @@ public:
     //sobrecarga de operadoes para fazer o iterador avancar ou voltar
     Iterador& operator++(int um);
     Iterador& operator--(int um);
+    bool operator!();
 };
 
 #endif // LDDE_H

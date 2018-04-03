@@ -32,7 +32,9 @@ bool Iterador::noExiste(){
         return true;
     return false;
 }
-
+bool Iterador::operator!(){
+    return noExiste();
+}
 Iterador& Iterador::operator++(int um){
     if(Iterador::avancar())
         return *this;
