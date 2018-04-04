@@ -17,7 +17,7 @@ LDDE::LDDE(){
     vector<Compromisso> v = x.buscaArquivo();
 
 
-        for(int i=0;i<v.size(); i++){
+        for(int i=0 ; i<v.size() ; i++){
             this->Inserir(v[i]);
         }
 

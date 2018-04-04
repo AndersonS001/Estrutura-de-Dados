@@ -2,9 +2,16 @@
 #include "ui_agenda.h"
 #include "compromisso.h"
 #include "no.h"
+
+#include "insercao.h"
+#include "visualizacao.h"
+#include "alteracao.h"
+#include "exclusao.h"
+
 #include <QMessageBox>
 #include <QString>
 #define FLAG_AGENDA 1
+
 Agenda::Agenda(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Agenda)
@@ -12,7 +19,13 @@ Agenda::Agenda(QWidget *parent) :
     ui->setupUi(this);
     this->lista = new LDDE();
     this->setAgora();
-    this->ano =2000;
+    this->ano = 2000;
+}
+
+Agenda::~Agenda()
+{
+    delete this->lista;
+    delete ui;
 }
 
 void Agenda::setAgora(){
@@ -37,20 +50,13 @@ void Agenda::setAgora(){
     ui->dtQuando->setDate(dataAtual);
 }
 
-Agenda::~Agenda()
-{
-    delete this->lista;
-    delete ui;
-}
-
 void Agenda::Limpar(){
     ui->txtTitulo->setText("");
     ui->txtDescricao->setText("");
     setAgora();
 }
 
-bool Agenda::on_btnInserir_clicked()
-{
+bool Agenda::on_btnInserir_clicked(){
     Compromisso novo;
     if(ui->txtTitulo->displayText().isEmpty()){
         QMessageBox::information(nullptr,"Erro","Dê um título ao seu compromisso!");
@@ -68,15 +74,13 @@ bool Agenda::on_btnInserir_clicked()
     return false;
 }
 
-bool Agenda::on_btnVisualizar_clicked()
-{
+bool Agenda::on_btnVisualizar_clicked(){
     bool funfou = lista->Imprimir();
     Limpar();
     return funfou;
 }
 
-void Agenda::on_btnRemover_clicked()
-{
+void Agenda::on_btnRemover_clicked(){
     Compromisso novo;
     QTime aux(ui->dtQuando->time().hour(), ui->dtQuando->time().minute(), 0);
     novo.setQuando(ui->dtQuando->date(), aux);
@@ -84,8 +88,7 @@ void Agenda::on_btnRemover_clicked()
     Limpar();
 }
 
-void Agenda::on_btnAlterar_clicked()
-{
+void Agenda::on_btnAlterar_clicked(){
     Compromisso remover;
     QTime aux(ui->dtQuando->time().hour(), ui->dtQuando->time().minute(), 0);
     remover.setQuando(ui->dtQuando->date(), aux);
@@ -94,4 +97,28 @@ void Agenda::on_btnAlterar_clicked()
     Compromisso novo(testeData,testeHora,"Vai funfar porque sei o que estou fazendo","FUNFA");
     lista->Alterar(remover,novo);
     Limpar();
+}
+
+void Agenda::on_actionInserir_triggered(){
+    Insercao telaInsercao;
+    telaInsercao.exec();
+}
+
+void Agenda::on_actionVisualizar_triggered(){
+    visualizacao telaVisualizacao;
+    telaVisualizacao.exec();
+}
+
+void Agenda::on_actionAltera_o_triggered(){
+    Alteracao telaAlteracao;
+    telaAlteracao.exec();
+}
+
+void Agenda::on_actionExclus_o_triggered(){
+    Exclusao telaExclusao;
+    telaExclusao.exec();
+}
+
+void Agenda::on_actionSair_triggered(){
+    QApplication::exit();
 }

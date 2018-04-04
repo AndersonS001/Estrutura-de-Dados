@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>Imagens/edicao-geral_318-27993.jpg</file>
+        <file>Imagens/ferramenta-de-lupa_318-50335.jpg</file>
+        <file>Imagens/lixeira_318-35857.jpg</file>
+        <file>Imagens/porta-de-saida_318-48444.jpg</file>
+        <file>Imagens/sinal-de-mais_318-54005.jpg</file>
+    </qresource>
+</RCC>

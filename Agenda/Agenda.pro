@@ -19,13 +19,28 @@ SOURCES += main.cpp\
     no.cpp \
     arquivo.cpp \
     fila.cpp \
-    iterador.cpp
+    iterador.cpp \
+    insercao.cpp \
+    visualizacao.cpp \
+    alteracao.cpp \
+    exclusao.cpp
 
 HEADERS  += agenda.h \
     compromisso.h \
     ldde.h \
     no.h \
     arquivo.h \
-    fila.h
+    fila.h \
+    insercao.h \
+    visualizacao.h \
+    alteracao.h \
+    exclusao.h
 
-FORMS    += agenda.ui
+FORMS    += agenda.ui \
+    insercao.ui \
+    visualizacao.ui \
+    alteracao.ui \
+    exclusao.ui
+
+RESOURCES += \
+    imagens.qrc

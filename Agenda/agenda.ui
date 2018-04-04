@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>430</width>
-    <height>240</height>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Agenda</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -161,6 +161,75 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>430</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFun_es">
+    <property name="title">
+     <string>Funções</string>
+    </property>
+    <addaction name="actionInserir"/>
+    <addaction name="actionVisualizar"/>
+    <addaction name="actionAltera_o"/>
+    <addaction name="actionExclus_o"/>
+    <addaction name="actionSair"/>
+   </widget>
+   <addaction name="menuFun_es"/>
+  </widget>
+  <action name="actionInserir">
+   <property name="icon">
+    <iconset>
+     <normaloff>Imagens/sinal-de-mais_318-54005.jpg</normaloff>Imagens/sinal-de-mais_318-54005.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Inserir</string>
+   </property>
+  </action>
+  <action name="actionVisualizar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Visualizar</string>
+   </property>
+  </action>
+  <action name="actionAltera_o">
+   <property name="icon">
+    <iconset>
+     <normaloff>Imagens/edicao-geral_318-27993.jpg</normaloff>Imagens/edicao-geral_318-27993.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Alteração</string>
+   </property>
+  </action>
+  <action name="actionExclus_o">
+   <property name="icon">
+    <iconset>
+     <normaloff>Imagens/lixeira_318-35857.jpg</normaloff>Imagens/lixeira_318-35857.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Exclusão</string>
+   </property>
+  </action>
+  <action name="actionSair">
+   <property name="icon">
+    <iconset>
+     <normaloff>Imagens/porta-de-saida_318-48444.jpg</normaloff>Imagens/porta-de-saida_318-48444.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

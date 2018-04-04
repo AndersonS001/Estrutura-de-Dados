@@ -19,12 +19,17 @@ public:
     int ano;
 private slots:
     bool on_btnInserir_clicked();
-
     bool on_btnVisualizar_clicked();
-
     void on_btnRemover_clicked();
-
     void on_btnAlterar_clicked();
+
+    void on_actionInserir_triggered();
+    void on_actionVisualizar_triggered();
+    void on_actionAltera_o_triggered();
+
+    void on_actionExclus_o_triggered();
+
+    void on_actionSair_triggered();
 
 private:
     Ui::Agenda *ui;
