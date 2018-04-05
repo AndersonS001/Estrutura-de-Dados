@@ -27,6 +27,7 @@ void Alteracao::Limpar(){
 void Alteracao::on_btnAlterar_clicked()
 {
     //-------------descobriri como usar a função aki-----------------;
+
 }
 
 void Alteracao::on_btnLimpar_clicked()

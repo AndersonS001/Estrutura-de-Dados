@@ -15,12 +15,12 @@ LDDE::LDDE(){
 
     Arquivo x;
     vector<Compromisso> v = x.buscaArquivo();
+    n=0;
 
-
-        for(int i=0 ; i<v.size() ; i++){
-            this->Inserir(v[i]);
-        }
-
+    for(int i=0;i<v.size(); i++){
+        this->Inserir(v[i]);
+        n++;
+    }
 }
 
 LDDE::~LDDE(){
@@ -42,8 +42,18 @@ LDDE::~LDDE(){
     }
 }
 
+void LDDE::atualizaLista(){
+    Arquivo x;
+    vector<Compromisso> v = x.buscaArquivo();
+
+    for(int i=(n+1); i<v.size(); i++){
+        this->Inserir(v[i]);
+    }
+}
+
 bool LDDE::Imprimir(Compromisso compromisso){
 
+    atualizaLista();
     Iterador imprimir;
     Buscar(imprimir,compromisso);
     if (!imprimir.noExiste())
@@ -56,8 +66,8 @@ bool LDDE::Imprimir(Compromisso compromisso){
 }
 
 bool LDDE::Imprimir(){
+    atualizaLista();
     Iterador atual(this->primeiro);
-    //No *atual = primeiro;
 
     if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
@@ -74,6 +84,7 @@ bool LDDE::Imprimir(){
 }
 
 bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
+    atualizaLista();
     Iterador atual(primeiro);
     if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
@@ -111,9 +122,9 @@ bool LDDE::Remover(Compromisso remover, int flag){
         ultimo = anterior.getEnderecoAtual();
     if(flag !=0){
         QMessageBox::information(nullptr,"Deletando o compromisso",removido.getValor().getTitulo() +" no dia " +
-                             removido.getValor().getData()+" ás "+
-                             removido.getValor().getHora()+"\n\nDescrição: "+
-                             removido.getValor().getDescricao());
+                                 removido.getValor().getData()+" ás "+
+                                 removido.getValor().getHora()+"\n\nDescrição: "+
+                                 removido.getValor().getDescricao());
     }
     delete removido.getEnderecoAtual();
     return true;
@@ -154,10 +165,11 @@ bool LDDE::Inserir(Compromisso newAppointment){
 }
 
 bool LDDE::Alterar(Compromisso removido, Compromisso novo){
-   //Se deletar o removido, vai retornar true
+    //atualizaLista();
+    //Se deletar o removido, vai retornar true
     if(!this->Remover(removido, FLAG))
-       return false;
+        return false;
     this->Inserir(novo);
-    QMessageBox::information(nullptr,"Funfou","Valor alterado");
+    QMessageBox::information(nullptr,"Alteração","Valor alterado");
     return true;
 }

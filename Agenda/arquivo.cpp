@@ -12,7 +12,6 @@ using namespace std;
 
 Arquivo::Arquivo(){
     criaArquivo();
-    buscaArquivo();
 }
 
 bool Arquivo::criaArquivo()

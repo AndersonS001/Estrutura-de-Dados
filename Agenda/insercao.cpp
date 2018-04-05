@@ -16,6 +16,11 @@ Insercao::Insercao(QWidget *parent): QDialog(parent), ui(new Ui::Insercao)
     this->ano = 2000;
 }
 
+Insercao::~Insercao(){
+    delete this->lista;
+    delete ui;
+}
+
 void Insercao::setAgora(){
     QDate dataAtual;
     QTime horaAtual;
@@ -38,20 +43,30 @@ void Insercao::setAgora(){
     ui->dtQuando->setDate(dataAtual);
 }
 
-Insercao::~Insercao()
-{
-    delete ui;
-}
-
 void Insercao::Limpar(){
     ui->txtTitulo->setText("");
     ui->txtDescricao->setText("");
     setAgora();
 }
 
-void Insercao::on_btnInserir_clicked()
+bool Insercao::on_btnInserir_clicked()
 {
-    //-------------descobriri como usar a função aki-----------------;
+    Compromisso novo;
+    if(ui->txtTitulo->displayText().isEmpty()){
+        QMessageBox::information(nullptr,"Erro","Dê um título ao seu compromisso!");
+        return false;
+    }
+    QTime aux(ui->dtQuando->time().hour(), ui->dtQuando->time().minute(), 0);
+    novo.setQuando(ui->dtQuando->date(), aux);
+    novo.setTitulo(ui->txtTitulo->displayText());
+    novo.setDescricao(ui->txtDescricao->toPlainText());
+    if(this->lista->Inserir(novo)){
+        QMessageBox::information(nullptr,"Novo compromisso","Compromisso inserido com sucesso");
+        Limpar();
+        return true;
+    }
+
+    return false;
 }
 
 void Insercao::on_btnLimpar_clicked()
@@ -64,6 +79,3 @@ void Insercao::on_btnCancelar_clicked()
     //-------------descobriri um comando de fechar essa merda de janela-----------------;
     //QApplication.exit();
 }
-
-
-

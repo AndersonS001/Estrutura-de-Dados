@@ -20,7 +20,7 @@ public:
     int ano;
 
 private slots:
-    void on_btnInserir_clicked();
+    bool on_btnInserir_clicked();
     void on_btnLimpar_clicked();
     void on_btnCancelar_clicked();
 

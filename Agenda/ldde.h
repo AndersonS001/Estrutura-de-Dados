@@ -10,6 +10,8 @@ class LDDE{
 private:
     No* primeiro;
     No* ultimo;
+    void atualizaLista();
+    int n;
 public:
     LDDE();
     ~LDDE();

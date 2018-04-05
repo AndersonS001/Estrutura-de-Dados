@@ -36,6 +36,8 @@ public:
     QAction *actionInserir;
     QAction *actionVisualizar;
     QAction *actionAltera_o;
+    QAction *actionExclus_o;
+    QAction *actionSair;
     QWidget *centralWidget;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -61,10 +63,30 @@ public:
         Agenda->resize(430, 260);
         actionInserir = new QAction(Agenda);
         actionInserir->setObjectName(QStringLiteral("actionInserir"));
+        QIcon icon;
+        icon.addFile(QStringLiteral("Imagens/sinal-de-mais_318-54005.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionInserir->setIcon(icon);
         actionVisualizar = new QAction(Agenda);
         actionVisualizar->setObjectName(QStringLiteral("actionVisualizar"));
+        actionVisualizar->setCheckable(true);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("Imagens/ferramenta-de-lupa_318-50335.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionVisualizar->setIcon(icon1);
         actionAltera_o = new QAction(Agenda);
         actionAltera_o->setObjectName(QStringLiteral("actionAltera_o"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral("Imagens/edicao-geral_318-27993.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAltera_o->setIcon(icon2);
+        actionExclus_o = new QAction(Agenda);
+        actionExclus_o->setObjectName(QStringLiteral("actionExclus_o"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral("Imagens/lixeira_318-35857.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionExclus_o->setIcon(icon3);
+        actionSair = new QAction(Agenda);
+        actionSair->setObjectName(QStringLiteral("actionSair"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral("Imagens/porta-de-saida_318-48444.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSair->setIcon(icon4);
         centralWidget = new QWidget(Agenda);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
@@ -163,6 +185,8 @@ public:
         menuFun_es->addAction(actionInserir);
         menuFun_es->addAction(actionVisualizar);
         menuFun_es->addAction(actionAltera_o);
+        menuFun_es->addAction(actionExclus_o);
+        menuFun_es->addAction(actionSair);
 
         retranslateUi(Agenda);
 
@@ -175,6 +199,8 @@ public:
         actionInserir->setText(QApplication::translate("Agenda", "Inserir", 0));
         actionVisualizar->setText(QApplication::translate("Agenda", "Visualizar", 0));
         actionAltera_o->setText(QApplication::translate("Agenda", "Altera\303\247\303\243o", 0));
+        actionExclus_o->setText(QApplication::translate("Agenda", "Exclus\303\243o", 0));
+        actionSair->setText(QApplication::translate("Agenda", "Sair", 0));
         label->setText(QApplication::translate("Agenda", "Nome do evento:", 0));
         label_2->setText(QApplication::translate("Agenda", "Data e Hor\303\241rio:", 0));
         label_3->setText(QApplication::translate("Agenda", "Descri\303\247\303\243o:", 0));

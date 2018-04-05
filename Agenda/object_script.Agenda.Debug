@@ -10,8 +10,11 @@ INPUT(
 ./debug\insercao.o
 ./debug\visualizacao.o
 ./debug\alteracao.o
+./debug\exclusao.o
+./debug\qrc_imagens.o
 ./debug\moc_agenda.o
 ./debug\moc_insercao.o
 ./debug\moc_visualizacao.o
 ./debug\moc_alteracao.o
+./debug\moc_exclusao.o
 );

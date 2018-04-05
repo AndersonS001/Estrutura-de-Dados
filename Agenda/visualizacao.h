@@ -15,7 +15,7 @@ class visualizacao : public QDialog
 
 public:
     explicit visualizacao(QWidget *parent = 0);
-    ~visualizacao();
+    virtual ~visualizacao();
 
 private slots:
     void on_btnVisualizar_clicked();

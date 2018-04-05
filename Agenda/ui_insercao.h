@@ -35,11 +35,11 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QFormLayout *formLayout;
-    QLabel *label;
+    QLabel *lblNomeEvento;
     QLineEdit *txtTitulo;
-    QLabel *label_2;
+    QLabel *lblDataHorario;
     QDateTimeEdit *dtQuando;
-    QLabel *label_3;
+    QLabel *lblDescricao;
     QTextEdit *txtDescricao;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
@@ -60,24 +60,24 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        lblNomeEvento = new QLabel(layoutWidget);
+        lblNomeEvento->setObjectName(QStringLiteral("lblNomeEvento"));
         QFont font;
         font.setPointSize(10);
-        label->setFont(font);
+        lblNomeEvento->setFont(font);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout->setWidget(0, QFormLayout::LabelRole, lblNomeEvento);
 
         txtTitulo = new QLineEdit(layoutWidget);
         txtTitulo->setObjectName(QStringLiteral("txtTitulo"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, txtTitulo);
 
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setFont(font);
+        lblDataHorario = new QLabel(layoutWidget);
+        lblDataHorario->setObjectName(QStringLiteral("lblDataHorario"));
+        lblDataHorario->setFont(font);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(1, QFormLayout::LabelRole, lblDataHorario);
 
         dtQuando = new QDateTimeEdit(layoutWidget);
         dtQuando->setObjectName(QStringLiteral("dtQuando"));
@@ -89,11 +89,11 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, dtQuando);
 
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setFont(font);
+        lblDescricao = new QLabel(layoutWidget);
+        lblDescricao->setObjectName(QStringLiteral("lblDescricao"));
+        lblDescricao->setFont(font);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(2, QFormLayout::LabelRole, lblDescricao);
 
         txtDescricao = new QTextEdit(layoutWidget);
         txtDescricao->setObjectName(QStringLiteral("txtDescricao"));
@@ -136,9 +136,9 @@ public:
     void retranslateUi(QDialog *Insercao)
     {
         Insercao->setWindowTitle(QApplication::translate("Insercao", "Inser\303\247\303\243o de evento", 0));
-        label->setText(QApplication::translate("Insercao", "Nome do evento:", 0));
-        label_2->setText(QApplication::translate("Insercao", "Data e Hor\303\241rio:", 0));
-        label_3->setText(QApplication::translate("Insercao", "Descri\303\247\303\243o:", 0));
+        lblNomeEvento->setText(QApplication::translate("Insercao", "Nome do evento:", 0));
+        lblDataHorario->setText(QApplication::translate("Insercao", "Data e Hor\303\241rio:", 0));
+        lblDescricao->setText(QApplication::translate("Insercao", "Descri\303\247\303\243o:", 0));
         btnCancelar->setText(QApplication::translate("Insercao", "Cancelar", 0));
         btnLimpar->setText(QApplication::translate("Insercao", "Limpar", 0));
         btnInserir->setText(QApplication::translate("Insercao", "Inserir", 0));

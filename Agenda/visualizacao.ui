@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>80</y>
+     <y>10</y>
      <width>359</width>
      <height>16</height>
     </rect>
@@ -26,7 +26,7 @@
     <string>Clique em &quot;Visualizar&quot; para ver sequencialmente todos os eventos inseridos</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>179</x>

@@ -10,8 +10,11 @@ INPUT(
 ./release\insercao.o
 ./release\visualizacao.o
 ./release\alteracao.o
+./release\exclusao.o
+./release\qrc_imagens.o
 ./release\moc_agenda.o
 ./release\moc_insercao.o
 ./release\moc_visualizacao.o
 ./release\moc_alteracao.o
+./release\moc_exclusao.o
 );

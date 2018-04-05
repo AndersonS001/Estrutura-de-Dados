@@ -32,30 +32,30 @@ QT_BEGIN_NAMESPACE
 class Ui_Alteracao
 {
 public:
-    QLabel *label_4;
+    QLabel *lblIntrucao;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QFormLayout *formLayout;
-    QLabel *label_2;
+    QLabel *lblDataHorario;
     QDateTimeEdit *dtQuando;
-    QLabel *label;
+    QLabel *lblNomeEvento;
     QLineEdit *txtTitulo;
-    QLabel *label_3;
+    QLabel *lblDescricao;
     QTextEdit *txtDescricao;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *btnCancelar;
+    QPushButton *btnLimpar;
+    QPushButton *btnAlterar;
 
     void setupUi(QDialog *Alteracao)
     {
         if (Alteracao->objectName().isEmpty())
             Alteracao->setObjectName(QStringLiteral("Alteracao"));
         Alteracao->resize(465, 275);
-        label_4 = new QLabel(Alteracao);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(10, 20, 451, 21));
+        lblIntrucao = new QLabel(Alteracao);
+        lblIntrucao->setObjectName(QStringLiteral("lblIntrucao"));
+        lblIntrucao->setGeometry(QRect(10, 20, 451, 21));
         layoutWidget = new QWidget(Alteracao);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(40, 60, 391, 191));
@@ -64,13 +64,13 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        lblDataHorario = new QLabel(layoutWidget);
+        lblDataHorario->setObjectName(QStringLiteral("lblDataHorario"));
         QFont font;
         font.setPointSize(10);
-        label_2->setFont(font);
+        lblDataHorario->setFont(font);
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(0, QFormLayout::LabelRole, lblDataHorario);
 
         dtQuando = new QDateTimeEdit(layoutWidget);
         dtQuando->setObjectName(QStringLiteral("dtQuando"));
@@ -82,22 +82,22 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, dtQuando);
 
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setFont(font);
+        lblNomeEvento = new QLabel(layoutWidget);
+        lblNomeEvento->setObjectName(QStringLiteral("lblNomeEvento"));
+        lblNomeEvento->setFont(font);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label);
+        formLayout->setWidget(1, QFormLayout::LabelRole, lblNomeEvento);
 
         txtTitulo = new QLineEdit(layoutWidget);
         txtTitulo->setObjectName(QStringLiteral("txtTitulo"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, txtTitulo);
 
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setFont(font);
+        lblDescricao = new QLabel(layoutWidget);
+        lblDescricao->setObjectName(QStringLiteral("lblDescricao"));
+        lblDescricao->setFont(font);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
+        formLayout->setWidget(2, QFormLayout::LabelRole, lblDescricao);
 
         txtDescricao = new QTextEdit(layoutWidget);
         txtDescricao->setObjectName(QStringLiteral("txtDescricao"));
@@ -113,26 +113,26 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_3 = new QPushButton(layoutWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        btnCancelar = new QPushButton(layoutWidget);
+        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
 
-        horizontalLayout->addWidget(pushButton_3);
+        horizontalLayout->addWidget(btnCancelar);
 
-        pushButton_2 = new QPushButton(layoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        btnLimpar = new QPushButton(layoutWidget);
+        btnLimpar->setObjectName(QStringLiteral("btnLimpar"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(btnLimpar);
 
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        btnAlterar = new QPushButton(layoutWidget);
+        btnAlterar->setObjectName(QStringLiteral("btnAlterar"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(btnAlterar);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         layoutWidget->raise();
-        label_4->raise();
+        lblIntrucao->raise();
 
         retranslateUi(Alteracao);
 
@@ -141,14 +141,14 @@ public:
 
     void retranslateUi(QDialog *Alteracao)
     {
-        Alteracao->setWindowTitle(QApplication::translate("Alteracao", "Dialog", 0));
-        label_4->setText(QApplication::translate("Alteracao", "Coloque a Data e o Hor\303\241rio do evento que deseja alterar juntamente das novas informa\303\247\303\265es", 0));
-        label_2->setText(QApplication::translate("Alteracao", "Data e Hor\303\241rio:", 0));
-        label->setText(QApplication::translate("Alteracao", "Nome do evento:", 0));
-        label_3->setText(QApplication::translate("Alteracao", "Descri\303\247\303\243o:", 0));
-        pushButton_3->setText(QApplication::translate("Alteracao", "Cancelar", 0));
-        pushButton_2->setText(QApplication::translate("Alteracao", "Limpar", 0));
-        pushButton->setText(QApplication::translate("Alteracao", "Alterar", 0));
+        Alteracao->setWindowTitle(QApplication::translate("Alteracao", "Altera\303\247\303\243o de evento", 0));
+        lblIntrucao->setText(QApplication::translate("Alteracao", "Coloque a Data e o Hor\303\241rio do evento que deseja alterar juntamente das novas informa\303\247\303\265es", 0));
+        lblDataHorario->setText(QApplication::translate("Alteracao", "Data e Hor\303\241rio:", 0));
+        lblNomeEvento->setText(QApplication::translate("Alteracao", "Nome do evento:", 0));
+        lblDescricao->setText(QApplication::translate("Alteracao", "Descri\303\247\303\243o:", 0));
+        btnCancelar->setText(QApplication::translate("Alteracao", "Cancelar", 0));
+        btnLimpar->setText(QApplication::translate("Alteracao", "Limpar", 0));
+        btnAlterar->setText(QApplication::translate("Alteracao", "Alterar", 0));
     } // retranslateUi
 
 };

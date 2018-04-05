@@ -14,8 +14,7 @@ visualizacao::visualizacao(QWidget *parent) :
     ui->setupUi(this);
 }
 
-visualizacao::~visualizacao()
-{
+visualizacao::~visualizacao(){
     delete ui;
 }
 
