@@ -15,7 +15,7 @@ private:
 public:
     LDDE();
     ~LDDE();
-    bool Inserir(Compromisso newAppointment);
+    bool Inserir(Compromisso newAppointment, bool arq);
     bool Remover(Compromisso remover, int flag);
     bool Imprimir();
     bool Imprimir(Compromisso compromisso);
@@ -39,7 +39,7 @@ private:
     void setEnderecoAnterior(No* enderecoAnterior){ it->endAnt = enderecoAnterior;}
     void setIt(No *no){it =no;}
 public:
-    friend bool LDDE::Inserir(Compromisso newAppointment);
+    friend bool LDDE::Inserir(Compromisso newAppointment, bool arq);
     friend bool LDDE::Remover(Compromisso remover, int flag);
     friend LDDE::~LDDE();
     Iterador();

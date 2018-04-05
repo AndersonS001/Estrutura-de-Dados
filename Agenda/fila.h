@@ -12,13 +12,16 @@ public:
     ~Fila();
     bool insere(Compromisso c);
     bool insere(No* c);
-    No* getPrimeiro();
-    bool remove();
-    Compromisso getValores();
+    Compromisso remove();
+    int size();
+    bool filaVazia();
 
 private:
   No* primeiro;
   No* ultimo;
+  Compromisso getValores();
+
+  int n;
 };
 
 #endif // FILA_H

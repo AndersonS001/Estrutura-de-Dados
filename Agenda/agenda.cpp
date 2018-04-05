@@ -66,7 +66,7 @@ bool Agenda::on_btnInserir_clicked(){
     novo.setQuando(ui->dtQuando->date(), aux);
     novo.setTitulo(ui->txtTitulo->displayText());
     novo.setDescricao(ui->txtDescricao->toPlainText());
-    if(this->lista->Inserir(novo)){
+    if(this->lista->Inserir(novo,false)){
         QMessageBox::information(nullptr,"Novo compromisso","Compromisso inserido com sucesso");
         Limpar();
         return true;

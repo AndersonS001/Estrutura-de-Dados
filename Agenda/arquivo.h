@@ -14,7 +14,8 @@ public:
     QString leDadosInseridosArquivo();
     void insereArquivo(Iterador& c, int i);
     void insereArquivo(Compromisso c, int i);
-    vector<Compromisso> buscaArquivo();
+  //  vector<Compromisso> buscaArquivo();
+    Fila buscaArquivo();
     void arquivoLimpo();
     No* atual;
     No* obtemAtual();

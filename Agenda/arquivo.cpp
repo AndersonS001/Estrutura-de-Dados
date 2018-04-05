@@ -92,11 +92,11 @@ void Arquivo::arquivoLimpo(){
     remove( "Agenda.txt" );
 }
 
-vector<Compromisso> Arquivo::buscaArquivo(){
+Fila Arquivo::buscaArquivo(){
     ifstream file("Agenda.txt");
     Compromisso novo;
     string x;
-    vector<Compromisso> vec;
+    Fila fil;
 
     while (file >> x){
         QString valida = QString::fromStdString(x);
@@ -113,8 +113,10 @@ vector<Compromisso> Arquivo::buscaArquivo(){
         }
         if(valida.startsWith("3")){
             novo.setDescricao((valida.mid(1,valida.size())));
-            vec.push_back(novo);
+            fil.insere(novo);
         }
     }
-    return vec;
+    return fil;
 }
+
+

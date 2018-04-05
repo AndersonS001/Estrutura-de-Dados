@@ -5,7 +5,6 @@
 #include "fila.h"
 #include <QMessageBox>
 #include <QString>
-#include<vector>
 
 #define FLAG 0
 
@@ -14,11 +13,11 @@ LDDE::LDDE(){
     ultimo = nullptr;
 
     Arquivo x;
-    vector<Compromisso> v = x.buscaArquivo();
+    Fila v = x.buscaArquivo();
     n=0;
 
-    for(int i=0;i<v.size(); i++){
-        this->Inserir(v[i]);
+    while(v.size()){
+        this->Inserir(v.remove(),true);
         n++;
     }
 }
@@ -44,10 +43,10 @@ LDDE::~LDDE(){
 
 void LDDE::atualizaLista(){
     Arquivo x;
-    vector<Compromisso> v = x.buscaArquivo();
+    Fila v = x.buscaArquivo();
 
-    for(int i=(n+1); i<v.size(); i++){
-        this->Inserir(v[i]);
+    while(v.size()){
+        this->Inserir(v.remove(), true);
     }
 }
 
@@ -130,19 +129,24 @@ bool LDDE::Remover(Compromisso remover, int flag){
     return true;
 }
 
-bool LDDE::Inserir(Compromisso newAppointment){
+bool LDDE::Inserir(Compromisso newAppointment, bool arq = false){
     No* novo = new No(newAppointment);
     Iterador novoNo(novo);
+
     if(!novo){
         QMessageBox::information(nullptr,"Dunno","Não foi possível alocar memória");
         return false;
     }
+
+
     Iterador atual(primeiro);
     Iterador anterior;
     while(atual.noExiste() && atual.getValor().getQuando() <= newAppointment.getQuando()){
         if(novoNo.getValor().getQuando() == atual.getValor().getQuando()){
-            QMessageBox::information(nullptr,"Erro","Não é possível inserir dois compromissos na mesma data e hora!");
-            return false;
+            if(!arq){
+                QMessageBox::information(nullptr,"Erro","Não é possível inserir dois compromissos na mesma data e hora!");
+            }
+                return false;
         }
         anterior = atual;
         atual++;
@@ -169,7 +173,7 @@ bool LDDE::Alterar(Compromisso removido, Compromisso novo){
     //Se deletar o removido, vai retornar true
     if(!this->Remover(removido, FLAG))
         return false;
-    this->Inserir(novo);
+    this->Inserir(novo,false);
     QMessageBox::information(nullptr,"Alteração","Valor alterado");
     return true;
 }
