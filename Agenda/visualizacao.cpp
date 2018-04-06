@@ -7,23 +7,17 @@
 #include <QMessageBox>
 #include <QString>
 
-visualizacao::visualizacao(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::visualizacao)
-{
+visualizacao::visualizacao(QWidget *parent,LDDE *listaAgenda) :
+    QDialog(parent),ui(new Ui::visualizacao), visualizarAll(listaAgenda){
     ui->setupUi(this);
 }
 
 visualizacao::~visualizacao(){
+    visualizarAll = nullptr;
+    delete visualizarAll;
     delete ui;
 }
 
-void visualizacao::on_btnVisualizar_clicked()
-{
-    //-------------descobriri como usar a função aki-----------------;
-}
-
-void visualizacao::on_btnCancelar_clicked()
-{
-    //-------------descobriri um comando de fechar essa merda de janela-----------------;
+bool visualizacao::on_btnVisualizar_clicked(){
+    return visualizarAll->Imprimir();
 }

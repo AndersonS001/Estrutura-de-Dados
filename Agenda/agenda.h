@@ -15,10 +15,8 @@ class Agenda : public QMainWindow
 public:
     explicit Agenda(QWidget *parent = 0);
     ~Agenda();
-    void Limpar();
-    int ano;
 private slots:
-    bool on_btnInserir_clicked();
+    void on_btnInserir_clicked();
     bool on_btnVisualizar_clicked();
     void on_btnRemover_clicked();
     void on_btnAlterar_clicked();
@@ -30,12 +28,9 @@ private slots:
     void on_actionExclus_o_triggered();
 
     void on_actionSair_triggered();
-
 private:
     Ui::Agenda *ui;
     LDDE *lista;
-    //  Definir a data e hora atual (+1h) do meu objeto dtQuando (GUI)
-    void setAgora();
 };
 
 #endif // AGENDA_H

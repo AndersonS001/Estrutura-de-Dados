@@ -14,17 +14,30 @@ class Alteracao : public QDialog
     Q_OBJECT
 
 public:
-    explicit Alteracao(QWidget *parent = 0);
+    explicit Alteracao(QWidget *parent = 0, LDDE* listaAgenda = nullptr);
     ~Alteracao();
+
     void Limpar();
 
 private slots:
     void on_btnAlterar_clicked();
     void on_btnLimpar_clicked();
-    void on_btnCancelar_clicked();
+
+
+    bool on_btnBuscar_clicked();
 
 private:
     Ui::Alteracao *ui;
+    LDDE *listaAlterar;
+    Iterador itAlterar;
+
+    bool buscarCompromisso();
+    bool setarCampos();
+    bool alterarCompromisso();
+    void set_dtQuando();
+    void tempoInserir(QDateTime diaHora);
+    void setarVisibilidadeMembros(bool cond);
+    bool verificaVisibilidade_btnAlterar();
 };
 
 #endif // ALTERACAO_H

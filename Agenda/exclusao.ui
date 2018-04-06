@@ -13,13 +13,13 @@
   <property name="windowTitle">
    <string>Exclusão de evento</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>31</x>
      <y>81</y>
      <width>366</width>
-     <height>96</height>
+     <height>98</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -98,16 +98,16 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="btnCancelar">
+       <widget class="QPushButton" name="btnExcluir">
         <property name="text">
-         <string>Cancelar</string>
+         <string>Excluir</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnExcluir">
+       <widget class="QPushButton" name="btnCancelar">
         <property name="text">
-         <string>Excluir</string>
+         <string>Cancelar</string>
         </property>
        </widget>
       </item>

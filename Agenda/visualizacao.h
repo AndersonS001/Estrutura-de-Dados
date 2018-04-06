@@ -14,15 +14,15 @@ class visualizacao : public QDialog
     Q_OBJECT
 
 public:
-    explicit visualizacao(QWidget *parent = 0);
-    virtual ~visualizacao();
+    explicit visualizacao(QWidget *parent = 0, LDDE *listaAgenda =nullptr);
+    ~visualizacao();
 
 private slots:
-    void on_btnVisualizar_clicked();
-    void on_btnCancelar_clicked();
+    bool on_btnVisualizar_clicked();
 
 private:
     Ui::visualizacao *ui;
+    LDDE* visualizarAll;
 };
 
 #endif // VISUALIZACAO_H

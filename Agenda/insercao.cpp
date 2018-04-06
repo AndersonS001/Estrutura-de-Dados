@@ -3,21 +3,19 @@
 #include "agenda.h"
 #include "ui_agenda.h"
 #include "compromisso.h"
-#include "no.h"
 #include <QMessageBox>
 #include <QString>
-
-Insercao::Insercao(QWidget *parent): QDialog(parent), ui(new Ui::Insercao)
-                                    ,lista()
-{
+#define FLAG_INSERCAO 1
+//um sinalizador para imprimir uma mensagem de sucesso na inserção do novo compromisso
+Insercao::Insercao(QWidget *parent,LDDE* listaAgenda): QDialog(parent), ui(new Ui::Insercao)
+                   ,listaInserir(listaAgenda){
     ui->setupUi(this);
-    this->lista = new LDDE();
     this->setAgora();
-    this->ano = 2000;
 }
 
 Insercao::~Insercao(){
-    delete this->lista;
+    listaInserir = nullptr;
+    delete listaInserir;
     delete ui;
 }
 
@@ -25,16 +23,16 @@ void Insercao::setAgora(){
     QDate dataAtual;
     QTime horaAtual;
     dataAtual = dataAtual.currentDate();
-    horaAtual = horaAtual.currentTime(); //depois incrementa-se 1h como tempo minimo para marcar um compromisso
+    horaAtual = horaAtual.currentTime(); //depois incrementa-se 1h como tempo mínimo para marcar um compromisso
     QTime horaProibida(23, 00, 0); //23:00
-    /*  vou comparar se a hora atual eh 23h.Deve-se fazer isso porque o dia vai virar
-     * apos incrementar 1h, ai tem que acrescenter "1" a dataAtual
+    /*  vou comparar se a hora atual é 23h.Deve-se fazer isso porque o dia vai virar
+     * após incrementar 1h, aí tem que acrescenter "1" a dataAtual
      */
     if(horaAtual.hour()==horaProibida.hour()){
         dataAtual = dataAtual.addDays(1);
     }
-    /*  seto a data e a hora minima para marcar um compromisso.
-     *  data minima e o dia atual e o tempo minimo eh o horario atual+1h
+    /*  seto a data e hora mínima para marcar um compromisso.
+     *  data minima é o dia atual e o tempo mínimo é o horário atual+1h
      */
     ui->dtQuando->setMinimumDate(dataAtual);
     ui->dtQuando->setMinimumTime(horaAtual.addSecs(3600));
@@ -46,27 +44,27 @@ void Insercao::setAgora(){
 void Insercao::Limpar(){
     ui->txtTitulo->setText("");
     ui->txtDescricao->setText("");
-    setAgora();
+    this->setAgora();
 }
 
 bool Insercao::on_btnInserir_clicked()
 {
-    Compromisso novo;
+    return inserirNovoCompromisso();
+}
+
+bool Insercao::inserirNovoCompromisso(){
     if(ui->txtTitulo->displayText().isEmpty()){
-        QMessageBox::information(nullptr,"Erro","Dê um título ao seu compromisso!");
+        QMessageBox::information(nullptr,"Erro","Dê um título ao compromisso!");
         return false;
     }
+    Compromisso novo;
+    //Desprezo os segundos setando o tempo apenas com hora e minuto
     QTime aux(ui->dtQuando->time().hour(), ui->dtQuando->time().minute(), 0);
     novo.setQuando(ui->dtQuando->date(), aux);
     novo.setTitulo(ui->txtTitulo->displayText());
     novo.setDescricao(ui->txtDescricao->toPlainText());
-    if(this->lista->Inserir(novo,false)){
-        QMessageBox::information(nullptr,"Novo compromisso","Compromisso inserido com sucesso");
-        Limpar();
-        return true;
-    }
-
-    return false;
+    Limpar();
+    return listaInserir->Inserir(novo, FLAG_INSERCAO);
 }
 
 void Insercao::on_btnLimpar_clicked()
@@ -74,8 +72,3 @@ void Insercao::on_btnLimpar_clicked()
     Limpar();
 }
 
-void Insercao::on_btnCancelar_clicked()
-{
-    //-------------descobriri um comando de fechar essa merda de janela-----------------;
-    //QApplication.exit();
-}

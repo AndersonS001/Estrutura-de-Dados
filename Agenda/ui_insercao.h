@@ -43,9 +43,8 @@ public:
     QTextEdit *txtDescricao;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QPushButton *btnCancelar;
-    QPushButton *btnLimpar;
     QPushButton *btnInserir;
+    QPushButton *btnLimpar;
 
     void setupUi(QDialog *Insercao)
     {
@@ -109,20 +108,15 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        btnCancelar = new QPushButton(layoutWidget);
-        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
+        btnInserir = new QPushButton(layoutWidget);
+        btnInserir->setObjectName(QStringLiteral("btnInserir"));
 
-        horizontalLayout->addWidget(btnCancelar);
+        horizontalLayout->addWidget(btnInserir);
 
         btnLimpar = new QPushButton(layoutWidget);
         btnLimpar->setObjectName(QStringLiteral("btnLimpar"));
 
         horizontalLayout->addWidget(btnLimpar);
-
-        btnInserir = new QPushButton(layoutWidget);
-        btnInserir->setObjectName(QStringLiteral("btnInserir"));
-
-        horizontalLayout->addWidget(btnInserir);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -139,9 +133,8 @@ public:
         lblNomeEvento->setText(QApplication::translate("Insercao", "Nome do evento:", 0));
         lblDataHorario->setText(QApplication::translate("Insercao", "Data e Hor\303\241rio:", 0));
         lblDescricao->setText(QApplication::translate("Insercao", "Descri\303\247\303\243o:", 0));
-        btnCancelar->setText(QApplication::translate("Insercao", "Cancelar", 0));
-        btnLimpar->setText(QApplication::translate("Insercao", "Limpar", 0));
         btnInserir->setText(QApplication::translate("Insercao", "Inserir", 0));
+        btnLimpar->setText(QApplication::translate("Insercao", "Limpar", 0));
     } // retranslateUi
 
 };

@@ -30,7 +30,7 @@ QT_BEGIN_NAMESPACE
 class Ui_Exclusao
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *lblInstrucao;
     QFormLayout *formLayout_2;
@@ -38,28 +38,28 @@ public:
     QDateTimeEdit *dtQuando;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *btnCancelar;
     QPushButton *btnExcluir;
+    QPushButton *btnCancelar;
 
     void setupUi(QDialog *Exclusao)
     {
         if (Exclusao->objectName().isEmpty())
             Exclusao->setObjectName(QStringLiteral("Exclusao"));
         Exclusao->resize(430, 260);
-        widget = new QWidget(Exclusao);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(31, 81, 366, 96));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(Exclusao);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(31, 81, 366, 98));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        lblInstrucao = new QLabel(widget);
+        lblInstrucao = new QLabel(layoutWidget);
         lblInstrucao->setObjectName(QStringLiteral("lblInstrucao"));
 
         verticalLayout->addWidget(lblInstrucao);
 
         formLayout_2 = new QFormLayout();
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
-        lblDataHorario = new QLabel(widget);
+        lblDataHorario = new QLabel(layoutWidget);
         lblDataHorario->setObjectName(QStringLiteral("lblDataHorario"));
         QFont font;
         font.setPointSize(10);
@@ -67,7 +67,7 @@ public:
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, lblDataHorario);
 
-        dtQuando = new QDateTimeEdit(widget);
+        dtQuando = new QDateTimeEdit(layoutWidget);
         dtQuando->setObjectName(QStringLiteral("dtQuando"));
         dtQuando->setFont(font);
         dtQuando->setMinimumDateTime(QDateTime(QDate(2018, 3, 30), QTime(0, 0, 0)));
@@ -86,15 +86,15 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        btnCancelar = new QPushButton(widget);
-        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
-
-        horizontalLayout_2->addWidget(btnCancelar);
-
-        btnExcluir = new QPushButton(widget);
+        btnExcluir = new QPushButton(layoutWidget);
         btnExcluir->setObjectName(QStringLiteral("btnExcluir"));
 
         horizontalLayout_2->addWidget(btnExcluir);
+
+        btnCancelar = new QPushButton(layoutWidget);
+        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
+
+        horizontalLayout_2->addWidget(btnCancelar);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -110,8 +110,8 @@ public:
         Exclusao->setWindowTitle(QApplication::translate("Exclusao", "Exclus\303\243o de evento", 0));
         lblInstrucao->setText(QApplication::translate("Exclusao", "Coloque a Data e o Hor\303\241rio do evento que deseja excluir", 0));
         lblDataHorario->setText(QApplication::translate("Exclusao", "Data e Hor\303\241rio:", 0));
-        btnCancelar->setText(QApplication::translate("Exclusao", "Cancelar", 0));
         btnExcluir->setText(QApplication::translate("Exclusao", "Excluir", 0));
+        btnCancelar->setText(QApplication::translate("Exclusao", "Cancelar", 0));
     } // retranslateUi
 
 };

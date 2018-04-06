@@ -14,15 +14,17 @@ class Exclusao : public QDialog
     Q_OBJECT
 
 public:
-    explicit Exclusao(QWidget *parent = 0);
+    explicit Exclusao(QWidget *parent = 0, LDDE* listaAgenda = nullptr);
     ~Exclusao();
 
 private slots:
-    void on_btnExcluir_clicked();
-    void on_btnCancelar_clicked();
+    bool on_btnExcluir_clicked();
 
 private:
     Ui::Exclusao *ui;
+    LDDE *listaExclusao;
+    bool excluirCompromisso();
+    void setData();
 };
 
 #endif // EXCLUSAO_H

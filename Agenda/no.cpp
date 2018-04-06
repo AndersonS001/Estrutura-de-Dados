@@ -7,7 +7,7 @@ No::No(Compromisso elemento){
     this->endAnt = nullptr;
 }
 
-Compromisso No::getValor() const{
+Compromisso No::getValor()const{
     return valor;
 }
 

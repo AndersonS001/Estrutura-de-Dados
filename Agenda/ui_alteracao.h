@@ -44,9 +44,9 @@ public:
     QTextEdit *txtDescricao;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QPushButton *btnCancelar;
-    QPushButton *btnLimpar;
     QPushButton *btnAlterar;
+    QPushButton *btnBuscar;
+    QPushButton *btnLimpar;
 
     void setupUi(QDialog *Alteracao)
     {
@@ -55,10 +55,10 @@ public:
         Alteracao->resize(465, 275);
         lblIntrucao = new QLabel(Alteracao);
         lblIntrucao->setObjectName(QStringLiteral("lblIntrucao"));
-        lblIntrucao->setGeometry(QRect(10, 20, 451, 21));
+        lblIntrucao->setGeometry(QRect(10, 10, 451, 41));
         layoutWidget = new QWidget(Alteracao);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 60, 391, 191));
+        layoutWidget->setGeometry(QRect(40, 60, 391, 198));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -113,20 +113,20 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        btnCancelar = new QPushButton(layoutWidget);
-        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
+        btnAlterar = new QPushButton(layoutWidget);
+        btnAlterar->setObjectName(QStringLiteral("btnAlterar"));
 
-        horizontalLayout->addWidget(btnCancelar);
+        horizontalLayout->addWidget(btnAlterar);
+
+        btnBuscar = new QPushButton(layoutWidget);
+        btnBuscar->setObjectName(QStringLiteral("btnBuscar"));
+
+        horizontalLayout->addWidget(btnBuscar);
 
         btnLimpar = new QPushButton(layoutWidget);
         btnLimpar->setObjectName(QStringLiteral("btnLimpar"));
 
         horizontalLayout->addWidget(btnLimpar);
-
-        btnAlterar = new QPushButton(layoutWidget);
-        btnAlterar->setObjectName(QStringLiteral("btnAlterar"));
-
-        horizontalLayout->addWidget(btnAlterar);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -142,13 +142,14 @@ public:
     void retranslateUi(QDialog *Alteracao)
     {
         Alteracao->setWindowTitle(QApplication::translate("Alteracao", "Altera\303\247\303\243o de evento", 0));
-        lblIntrucao->setText(QApplication::translate("Alteracao", "Coloque a Data e o Hor\303\241rio do evento que deseja alterar juntamente das novas informa\303\247\303\265es", 0));
+        lblIntrucao->setText(QApplication::translate("Alteracao", "Coloque a Data e o Hor\303\241rio do evento que deseja alterar juntamente das \n"
+"novas informa\303\247\303\265es", 0));
         lblDataHorario->setText(QApplication::translate("Alteracao", "Data e Hor\303\241rio:", 0));
         lblNomeEvento->setText(QApplication::translate("Alteracao", "Nome do evento:", 0));
         lblDescricao->setText(QApplication::translate("Alteracao", "Descri\303\247\303\243o:", 0));
-        btnCancelar->setText(QApplication::translate("Alteracao", "Cancelar", 0));
-        btnLimpar->setText(QApplication::translate("Alteracao", "Limpar", 0));
         btnAlterar->setText(QApplication::translate("Alteracao", "Alterar", 0));
+        btnBuscar->setText(QApplication::translate("Alteracao", "Buscar", 0));
+        btnLimpar->setText(QApplication::translate("Alteracao", "Limpar", 0));
     } // retranslateUi
 
 };

@@ -17,7 +17,7 @@ LDDE::LDDE(){
     n=0;
 
     while(v.size()){
-        this->Inserir(v.remove(),true);
+        this->Inserir(v.remove(),FLAG);
         n++;
     }
 }
@@ -25,16 +25,14 @@ LDDE::LDDE(){
 LDDE::~LDDE(){
     Iterador atual(primeiro);
     Iterador backup;
-
     Arquivo x;
     int i=0;
-    if(!atual)
+    if(!atual) //errada
+    if(!atual.noExiste()) //condicao certa
         x.arquivoLimpo();
-
     while(atual.noExiste()){
         x.insereArquivo(atual,i);
         i++;
-
         backup.setIt(atual.getProximoEndereco());
         delete atual.getEnderecoAtual();
         atual = backup;
@@ -52,7 +50,7 @@ void LDDE::atualizaLista(){
 
 bool LDDE::Imprimir(Compromisso compromisso){
 
-    atualizaLista();
+//  atualizaLista();
     Iterador imprimir;
     Buscar(imprimir,compromisso);
     if (!imprimir.noExiste())
@@ -65,7 +63,7 @@ bool LDDE::Imprimir(Compromisso compromisso){
 }
 
 bool LDDE::Imprimir(){
-    atualizaLista();
+    //atualizaLista();
     Iterador atual(this->primeiro);
 
     if(!atual.noExiste()){
@@ -83,7 +81,7 @@ bool LDDE::Imprimir(){
 }
 
 bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
-    atualizaLista();
+    //atualizaLista();
     Iterador atual(primeiro);
     if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
@@ -101,11 +99,10 @@ bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
     return false;
 }
 
-// falta testar essa função
-bool LDDE::Remover(Compromisso remover, int flag){
-    Iterador removido;
+bool LDDE::Remover(Iterador &removido, int flag){
+/*    Iterador removido;
     this->Buscar(removido, remover);
-    if(!removido.noExiste())
+    */if(!removido.noExiste())
         return false;
     Iterador proximo(removido.getProximoEndereco()); // removido->proxEnd;
     Iterador anterior(removido.getEnderecoAnterior()); //= removido->endAnt;
@@ -129,24 +126,19 @@ bool LDDE::Remover(Compromisso remover, int flag){
     return true;
 }
 
-bool LDDE::Inserir(Compromisso newAppointment, bool arq = false){
+bool LDDE::Inserir(Compromisso newAppointment, int flag){
     No* novo = new No(newAppointment);
     Iterador novoNo(novo);
-
     if(!novo){
         QMessageBox::information(nullptr,"Dunno","Não foi possível alocar memória");
         return false;
     }
-
-
     Iterador atual(primeiro);
     Iterador anterior;
     while(atual.noExiste() && atual.getValor().getQuando() <= newAppointment.getQuando()){
-        if(novoNo.getValor().getQuando() == atual.getValor().getQuando()){
-            if(!arq){
-                QMessageBox::information(nullptr,"Erro","Não é possível inserir dois compromissos na mesma data e hora!");
-            }
-                return false;
+        if(novoNo.getValor().getQuando() == atual.getValor().getQuando() && flag !=0){
+            QMessageBox::information(nullptr,"Erro","Não é possível inserir dois compromissos na mesma data e hora!");
+            return false;
         }
         anterior = atual;
         atual++;
@@ -165,15 +157,17 @@ bool LDDE::Inserir(Compromisso newAppointment, bool arq = false){
     }
     novoNo.setEnderecoAnterior( anterior.getEnderecoAtual());
     novoNo.setProximoEndereco( atual.getEnderecoAtual());
+    if(flag != 0)
+        QMessageBox::information(nullptr,novoNo.getValor().getTitulo(),"Compromisso inserido com sucesso");
     return true;
 }
 
-bool LDDE::Alterar(Compromisso removido, Compromisso novo){
+bool LDDE::alterarCompromisso(Iterador removido, Compromisso novo){
     //atualizaLista();
     //Se deletar o removido, vai retornar true
-    if(!this->Remover(removido, FLAG))
+    if(!Remover(removido, FLAG))
         return false;
-    this->Inserir(novo,false);
+    this->Inserir(novo, FLAG);
     QMessageBox::information(nullptr,"Alteração","Valor alterado");
     return true;
 }

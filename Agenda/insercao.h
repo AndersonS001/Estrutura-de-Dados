@@ -14,20 +14,19 @@ class Insercao : public QDialog
     Q_OBJECT
 
 public:
-    explicit Insercao(QWidget *parent = 0);
+    explicit Insercao(QWidget *parent = 0, LDDE *listaAgenda = nullptr);
     ~Insercao();
     void Limpar();
-    int ano;
 
 private slots:
     bool on_btnInserir_clicked();
     void on_btnLimpar_clicked();
-    void on_btnCancelar_clicked();
 
 private:
     Ui::Insercao *ui;
-    LDDE *lista;
-    void setAgora();//  Definir a data e hora atual (+1h) do meu objeto dtQuando (GUI)
-};
+    LDDE *listaInserir;
 
+    bool inserirNovoCompromisso();
+    void setAgora();
+};
 #endif // INSERCAO_H
