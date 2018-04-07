@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>10</y>
+     <y>90</y>
      <width>359</width>
      <height>16</height>
     </rect>
@@ -26,31 +26,18 @@
     <string>Clique em &quot;Visualizar&quot; para ver sequencialmente todos os eventos inseridos</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QPushButton" name="btnVisualizar">
    <property name="geometry">
     <rect>
-     <x>179</x>
-     <y>109</y>
-     <width>82</width>
-     <height>61</height>
+     <x>180</x>
+     <y>129</y>
+     <width>80</width>
+     <height>21</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="btnVisualizar">
-      <property name="text">
-       <string>Visualizar</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnCancelar">
-      <property name="text">
-       <string>Cancelar</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="text">
+    <string>Visualizar</string>
+   </property>
   </widget>
  </widget>
  <resources/>

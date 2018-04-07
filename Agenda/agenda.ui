@@ -14,151 +14,24 @@
    <string>Agenda</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>391</width>
-      <height>201</height>
+      <x>100</x>
+      <y>100</y>
+      <width>232</width>
+      <height>25</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nome do evento:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="txtTitulo"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Data e Horário:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QDateTimeEdit" name="dtQuando">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="minimumDateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2018</year>
-           <month>3</month>
-           <day>30</day>
-          </datetime>
-         </property>
-         <property name="maximumDate">
-          <date>
-           <year>2100</year>
-           <month>12</month>
-           <day>31</day>
-          </date>
-         </property>
-         <property name="minimumDate">
-          <date>
-           <year>2018</year>
-           <month>3</month>
-           <day>30</day>
-          </date>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Descrição:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QTextEdit" name="txtDescricao"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="btnInserir">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Inserir</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnVisualizar">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Visualizar</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnAlterar">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Alterar</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnRemover">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Remover</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <property name="font">
+     <font>
+      <family>Cambria</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Agenda de Compromissos</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -185,7 +58,7 @@
   <action name="actionInserir">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/sinal-de-mais_318-54005.jpg</normaloff>Imagens/sinal-de-mais_318-54005.jpg</iconset>
+     <normaloff>Imagens/sinal-de-mais_318-54005.png</normaloff>Imagens/sinal-de-mais_318-54005.png</iconset>
    </property>
    <property name="text">
     <string>Inserir</string>
@@ -197,7 +70,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</iconset>
+     <normaloff>Imagens/ferramenta-de-lupa_318-50335.png</normaloff>Imagens/ferramenta-de-lupa_318-50335.png</iconset>
    </property>
    <property name="text">
     <string>Visualizar</string>
@@ -206,7 +79,7 @@
   <action name="actionAltera_o">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/edicao-geral_318-27993.jpg</normaloff>Imagens/edicao-geral_318-27993.jpg</iconset>
+     <normaloff>Imagens/edicao-geral_318-27993.png</normaloff>Imagens/edicao-geral_318-27993.png</iconset>
    </property>
    <property name="text">
     <string>Alteração</string>
@@ -215,7 +88,7 @@
   <action name="actionExclus_o">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/lixeira_318-35857.jpg</normaloff>Imagens/lixeira_318-35857.jpg</iconset>
+     <normaloff>Imagens/lixeira_318-35857.png</normaloff>Imagens/lixeira_318-35857.png</iconset>
    </property>
    <property name="text">
     <string>Exclusão</string>
@@ -224,7 +97,7 @@
   <action name="actionSair">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/porta-de-saida_318-48444.jpg</normaloff>Imagens/porta-de-saida_318-48444.jpg</iconset>
+     <normaloff>Imagens/porta-de-saida_318-48444.png</normaloff>Imagens/porta-de-saida_318-48444.png</iconset>
    </property>
    <property name="text">
     <string>Sair</string>

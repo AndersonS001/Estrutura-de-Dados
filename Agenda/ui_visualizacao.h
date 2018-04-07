@@ -17,8 +17,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,10 +24,7 @@ class Ui_visualizacao
 {
 public:
     QLabel *lblIntrucao;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
     QPushButton *btnVisualizar;
-    QPushButton *btnCancelar;
 
     void setupUi(QDialog *visualizacao)
     {
@@ -38,23 +33,10 @@ public:
         visualizacao->resize(430, 260);
         lblIntrucao = new QLabel(visualizacao);
         lblIntrucao->setObjectName(QStringLiteral("lblIntrucao"));
-        lblIntrucao->setGeometry(QRect(40, 10, 359, 16));
-        layoutWidget = new QWidget(visualizacao);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(179, 109, 82, 61));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        btnVisualizar = new QPushButton(layoutWidget);
+        lblIntrucao->setGeometry(QRect(40, 90, 359, 16));
+        btnVisualizar = new QPushButton(visualizacao);
         btnVisualizar->setObjectName(QStringLiteral("btnVisualizar"));
-
-        verticalLayout->addWidget(btnVisualizar);
-
-        btnCancelar = new QPushButton(layoutWidget);
-        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
-
-        verticalLayout->addWidget(btnCancelar);
-
+        btnVisualizar->setGeometry(QRect(180, 129, 80, 21));
 
         retranslateUi(visualizacao);
 
@@ -66,7 +48,6 @@ public:
         visualizacao->setWindowTitle(QApplication::translate("visualizacao", "Visualiza\303\247\303\243o de evento", 0));
         lblIntrucao->setText(QApplication::translate("visualizacao", "Clique em \"Visualizar\" para ver sequencialmente todos os eventos inseridos", 0));
         btnVisualizar->setText(QApplication::translate("visualizacao", "Visualizar", 0));
-        btnCancelar->setText(QApplication::translate("visualizacao", "Cancelar", 0));
     } // retranslateUi
 
 };
