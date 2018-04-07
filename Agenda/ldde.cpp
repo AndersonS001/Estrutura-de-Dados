@@ -27,8 +27,7 @@ LDDE::~LDDE(){
     Iterador backup;
     Arquivo x;
     int i=0;
-    if(!atual) //errada
-    if(!atual.noExiste()) //condicao certa
+    if(!atual.noExiste())
         x.arquivoLimpo();
     while(atual.noExiste()){
         x.insereArquivo(atual,i);
