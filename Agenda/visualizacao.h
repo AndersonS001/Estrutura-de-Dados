@@ -18,11 +18,20 @@ public:
     ~visualizacao();
 
 private slots:
-    bool on_btnVisualizar_clicked();
+
+    bool on_btnVoltar_clicked();
+
+    bool on_btnAvancar_clicked();
 
 private:
     Ui::visualizacao *ui;
     LDDE* visualizarAll;
+    Iterador it;
+
+    //it vai apontar para o primeiro
+    bool inicio();
+    //mostrar o compromisso do meu iterador
+    bool ver();
 };
 
 #endif // VISUALIZACAO_H

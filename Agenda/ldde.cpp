@@ -21,14 +21,12 @@ LDDE::LDDE(){
         n++;
     }
 }
-
 LDDE::~LDDE(){
     Iterador atual(primeiro);
     Iterador backup;
     Arquivo x;
     int i=0;
-    if(!atual) //errada
-    if(!atual.noExiste()) //condicao certa
+    if(!atual.noExiste())
         x.arquivoLimpo();
     while(atual.noExiste()){
         x.insereArquivo(atual,i);
@@ -49,8 +47,6 @@ void LDDE::atualizaLista(){
 }
 
 bool LDDE::Imprimir(Compromisso compromisso){
-
-//  atualizaLista();
     Iterador imprimir;
     Buscar(imprimir,compromisso);
     if (!imprimir.noExiste())
@@ -62,8 +58,23 @@ bool LDDE::Imprimir(Compromisso compromisso){
     return true;
 }
 
+bool LDDE::Inicio(Iterador &comeco){
+    Iterador atual(this->primeiro);
+    if(!atual.noExiste())
+        return false;
+    comeco = atual;
+    return true;
+}
+
+bool LDDE::Fim(Iterador &fim){
+    Iterador existe(this->ultimo);
+    if(!existe.noExiste())
+        return false;
+    fim = existe;
+    return true;
+}
+
 bool LDDE::Imprimir(){
-    //atualizaLista();
     Iterador atual(this->primeiro);
 
     if(!atual.noExiste()){
@@ -81,7 +92,6 @@ bool LDDE::Imprimir(){
 }
 
 bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
-    //atualizaLista();
     Iterador atual(primeiro);
     if(!atual.noExiste()){
         QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
@@ -100,20 +110,18 @@ bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
 }
 
 bool LDDE::Remover(Iterador &removido, int flag){
-/*    Iterador removido;
-    this->Buscar(removido, remover);
-    */if(!removido.noExiste())
+    if(!removido.noExiste())
         return false;
-    Iterador proximo(removido.getProximoEndereco()); // removido->proxEnd;
-    Iterador anterior(removido.getEnderecoAnterior()); //= removido->endAnt;
+    Iterador proximo(removido.getProximoEndereco());
+    Iterador anterior(removido.getEnderecoAnterior());
 
     if(anterior.noExiste())
-        anterior.setProximoEndereco(proximo.getEnderecoAtual()); //->proxEnd = proximo;
+        anterior.setProximoEndereco(proximo.getEnderecoAtual());
     else
         primeiro = proximo.getEnderecoAtual();
 
     if(proximo.noExiste())
-        proximo.setEnderecoAnterior(anterior.getEnderecoAtual());//->endAnt = anterior;
+        proximo.setEnderecoAnterior(anterior.getEnderecoAtual());
     else
         ultimo = anterior.getEnderecoAtual();
     if(flag !=0){
@@ -163,7 +171,6 @@ bool LDDE::Inserir(Compromisso newAppointment, int flag){
 }
 
 bool LDDE::alterarCompromisso(Iterador removido, Compromisso novo){
-    //atualizaLista();
     //Se deletar o removido, vai retornar true
     if(!Remover(removido, FLAG))
         return false;

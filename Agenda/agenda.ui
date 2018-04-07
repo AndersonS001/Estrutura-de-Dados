@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
-    <height>260</height>
+    <width>524</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,21 +17,129 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>100</y>
-      <width>232</width>
-      <height>25</height>
+      <x>130</x>
+      <y>10</y>
+      <width>184</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Cambria</family>
-      <pointsize>16</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
-    <property name="text">
-     <string>Agenda de Compromissos</string>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
     </property>
+    <property name="text">
+     <string>Próximos compromissos:</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>40</y>
+      <width>501</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTableWidget" name="tbProximosCompromissos">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="btnInserir">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Inserir</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Imagens/sinal-de-mais_318-54005.jpg</normaloff>Imagens/sinal-de-mais_318-54005.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnVisualizar">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Visualizar</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnAlterar">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Alterar</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Imagens/edicao-geral_318-27993.jpg</normaloff>Imagens/edicao-geral_318-27993.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRemover">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Remover</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Imagens/lixeira_318-35857.jpg</normaloff>Imagens/lixeira_318-35857.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSair">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Sair</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Imagens/porta-de-saida_318-48444.jpg</normaloff>Imagens/porta-de-saida_318-48444.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -39,8 +147,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>430</width>
-     <height>20</height>
+     <width>524</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFun_es">
@@ -58,7 +166,7 @@
   <action name="actionInserir">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/sinal-de-mais_318-54005.png</normaloff>Imagens/sinal-de-mais_318-54005.png</iconset>
+     <normaloff>Imagens/sinal-de-mais_318-54005.jpg</normaloff>Imagens/sinal-de-mais_318-54005.jpg</iconset>
    </property>
    <property name="text">
     <string>Inserir</string>
@@ -70,7 +178,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/ferramenta-de-lupa_318-50335.png</normaloff>Imagens/ferramenta-de-lupa_318-50335.png</iconset>
+     <normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</normaloff>Imagens/ferramenta-de-lupa_318-50335.jpg</iconset>
    </property>
    <property name="text">
     <string>Visualizar</string>
@@ -79,7 +187,7 @@
   <action name="actionAltera_o">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/edicao-geral_318-27993.png</normaloff>Imagens/edicao-geral_318-27993.png</iconset>
+     <normaloff>Imagens/edicao-geral_318-27993.jpg</normaloff>Imagens/edicao-geral_318-27993.jpg</iconset>
    </property>
    <property name="text">
     <string>Alteração</string>
@@ -88,7 +196,7 @@
   <action name="actionExclus_o">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/lixeira_318-35857.png</normaloff>Imagens/lixeira_318-35857.png</iconset>
+     <normaloff>Imagens/lixeira_318-35857.jpg</normaloff>Imagens/lixeira_318-35857.jpg</iconset>
    </property>
    <property name="text">
     <string>Exclusão</string>
@@ -97,7 +205,7 @@
   <action name="actionSair">
    <property name="icon">
     <iconset>
-     <normaloff>Imagens/porta-de-saida_318-48444.png</normaloff>Imagens/porta-de-saida_318-48444.png</iconset>
+     <normaloff>Imagens/porta-de-saida_318-48444.jpg</normaloff>Imagens/porta-de-saida_318-48444.jpg</iconset>
    </property>
    <property name="text">
     <string>Sair</string>

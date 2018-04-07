@@ -59,6 +59,7 @@ void Alteracao::tempoInserir(QDateTime diaHora){
     //seto valor a ser mostrado
     ui->dtQuando->setDate(diaHora.date());
     ui->dtQuando->setTime(diaHora.time());
+
 }
 
 bool Alteracao::buscarCompromisso(){

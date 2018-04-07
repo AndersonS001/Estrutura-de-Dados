@@ -39,6 +39,7 @@ public:
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *btnExcluir;
+    QPushButton *btnCancelar;
 
     void setupUi(QDialog *Exclusao)
     {
@@ -47,7 +48,7 @@ public:
         Exclusao->resize(430, 260);
         layoutWidget = new QWidget(Exclusao);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(31, 81, 366, 96));
+        layoutWidget->setGeometry(QRect(31, 81, 366, 98));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -90,6 +91,11 @@ public:
 
         horizontalLayout_2->addWidget(btnExcluir);
 
+        btnCancelar = new QPushButton(layoutWidget);
+        btnCancelar->setObjectName(QStringLiteral("btnCancelar"));
+
+        horizontalLayout_2->addWidget(btnCancelar);
+
 
         verticalLayout->addLayout(horizontalLayout_2);
 
@@ -105,6 +111,7 @@ public:
         lblInstrucao->setText(QApplication::translate("Exclusao", "Coloque a Data e o Hor\303\241rio do evento que deseja excluir", 0));
         lblDataHorario->setText(QApplication::translate("Exclusao", "Data e Hor\303\241rio:", 0));
         btnExcluir->setText(QApplication::translate("Exclusao", "Excluir", 0));
+        btnCancelar->setText(QApplication::translate("Exclusao", "Cancelar", 0));
     } // retranslateUi
 
 };

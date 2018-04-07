@@ -26,6 +26,8 @@ public:
     /*  Para não quebrar a lógica da LDDE ser ordenada na inserção, o "Alterar" vai
      *  deletar o nó buscado e inserir um novo se o valor buscado existir.*/
     bool alterarCompromisso(Iterador removido, Compromisso novo);
+    bool Inicio(Iterador &comeco);
+    bool Fim(Iterador &fim);
 };
 
 class Iterador{
