@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        agenda.cpp \
     compromisso.cpp \
     ldde.cpp \
     no.cpp \
@@ -23,7 +22,8 @@ SOURCES += main.cpp\
     insercao.cpp \
     visualizacao.cpp \
     alteracao.cpp \
-    exclusao.cpp
+    exclusao.cpp \
+    agenda.cpp
 
 HEADERS  += agenda.h \
     compromisso.h \

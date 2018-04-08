@@ -10,7 +10,7 @@
 Exclusao::Exclusao(QWidget *parent, LDDE *listaAgenda):QDialog(parent)
                     ,ui(new Ui::Exclusao),listaExclusao(listaAgenda){
     ui->setupUi(this);
-    setData();
+    setDataHora();
 }
 
 Exclusao::~Exclusao(){
@@ -19,9 +19,11 @@ Exclusao::~Exclusao(){
     delete ui;
 }
 
-void Exclusao::setData(){
+void Exclusao::setDataHora(){
     QDate auxData(2018,01,01);
+    QTime auxHora;
     ui->dtQuando->setMinimumDate(auxData);
+    ui->dtQuando->setTime(auxHora.currentTime());
     ui->dtQuando->setDate(auxData.currentDate());
 }
 
@@ -31,14 +33,15 @@ bool Exclusao::excluirCompromisso(){
     excluir.setQuando(ui->dtQuando->date(),aux);
     Iterador funfaPLS;
     QMessageBox::StandardButton resposta;
-    setData();
     if(listaExclusao->Buscar(funfaPLS, excluir)){
         resposta = QMessageBox::question(nullptr,"Exclusão do compromisso: "+ funfaPLS.getValor().getTitulo(),
                               "Deseja excluir o compromisso marcado em "+funfaPLS.getValor().getData()+
                               " às "+ funfaPLS.getValor().getHora()+"?",QMessageBox::Yes|QMessageBox::No);
+        setDataHora();
         if(resposta == QMessageBox::Yes)
             return listaExclusao->Remover(funfaPLS, FLAG_EXCLUSAO);
     }
+    setDataHora();
     return false;
 }
 

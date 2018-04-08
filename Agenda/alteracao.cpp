@@ -80,6 +80,14 @@ bool Alteracao::setarCampos(){
     return true;
 }
 
+bool Alteracao::resetarCampos(){
+    if(!this->itAlterar.noExiste())
+        return false;
+    ui->txtTitulo->setText(this->itAlterar.getValor().getTitulo());
+    ui->txtDescricao->setText(this->itAlterar.getValor().getDescricao());
+    tempoInserir(this->itAlterar.getValor().getQuando());
+}
+
 bool Alteracao::alterarCompromisso(){
     if(!this->itAlterar.noExiste()){
         QMessageBox::information(nullptr,"Erro","Iterador falhou!");
@@ -125,6 +133,8 @@ bool Alteracao::verificaVisibilidade_btnAlterar(){
             setarVisibilidadeMembros(false);
             return true;
         }
+        //caso a resposta seja não
+        resetarCampos();
     }
     return false;
 }

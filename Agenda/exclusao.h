@@ -24,7 +24,7 @@ private:
     Ui::Exclusao *ui;
     LDDE *listaExclusao;
     bool excluirCompromisso();
-    void setData();
+    void setDataHora();
 };
 
 #endif // EXCLUSAO_H

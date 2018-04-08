@@ -33,6 +33,7 @@ private:
 
     bool buscarCompromisso();
     bool setarCampos();
+    bool resetarCampos();
     bool alterarCompromisso();
     void set_dtQuando();
     void tempoInserir(QDateTime diaHora);
