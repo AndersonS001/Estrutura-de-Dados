@@ -1,10 +1,8 @@
 #include "no.h"
 #include "compromisso.h"
 #include <QString>
-No::No(Compromisso elemento){
-    this->valor = elemento;
-    this->proxEnd =nullptr;
-    this->endAnt = nullptr;
+
+No::No(Compromisso elemento) : valor(elemento), proxEnd(nullptr), endAnt(nullptr){
 }
 
 Compromisso No::getValor()const{
