@@ -74,23 +74,6 @@ bool LDDE::Fim(Iterador &fim){
     return true;
 }
 
-bool LDDE::Imprimir(){
-    Iterador atual(this->primeiro);
-
-    if(!atual.noExiste()){
-        QMessageBox::information(nullptr,"Erro", "Você não tem nenhum compromisso registrado");
-        return false;
-    }
-    while(atual.noExiste()){
-        QMessageBox::information(nullptr,"Compromisso",atual.getValor().getTitulo() +" no dia " +
-                                 atual.getValor().getData() +" ás "+
-                                 atual.getValor().getHora()+"\n\nDescrição: "+
-                                 atual.getValor().getDescricao());
-        atual++;
-    }
-    return true;
-}
-
 bool LDDE::Buscar(Iterador& achou,Compromisso buscar){
     Iterador atual(primeiro);
     if(!atual.noExiste()){

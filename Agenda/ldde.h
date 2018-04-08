@@ -19,8 +19,6 @@ public:
      * um QMessageBox*/
     bool Inserir(Compromisso newAppointment, int flag);
     bool Remover(Iterador &removido, int flag);
-
-    bool Imprimir();
     bool Imprimir(Compromisso compromisso);
     bool Buscar(Iterador& achou,Compromisso buscar);
     /*  Para não quebrar a lógica da LDDE ser ordenada na inserção, o "Alterar" vai
